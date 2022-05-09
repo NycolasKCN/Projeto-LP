@@ -7,9 +7,18 @@ public class OrdemDeServico {
     private String descricaoProblema;
 
     /**
-     * Default constructor
+     * Construtor padrão, nenhum parametro
      */
     public OrdemDeServico() {
+        this.id = 0;
+        this.status = "";
+        this.descricaoProblema = "";
+    }
+
+    public OrdemDeServico(int id, String status, String descricao){
+        this.id = id;
+        this.status = status;
+        this.descricaoProblema = descricao;
     }
 
     /**

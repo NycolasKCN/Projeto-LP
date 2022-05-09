@@ -8,9 +8,27 @@ public class Funcionario {
     private String senha;
 
     /**
-     * Default constructor
+     * Construtor sem nenhum parametro
      */
     public Funcionario() {
+        this.id = 0;
+        this.nome = "";
+        this.usuario = "";
+        this.senha = "";
+    }
+
+    /**
+     * Construtor com todos os parametros
+     * @param id id do funcionario
+     * @param nome nome do funcionario
+     * @param usuario usuario para entrada do funcionario
+     * @param senha senha do funcionario
+     */
+    public Funcionario(int id, String nome, String usuario, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = senha;
     }
 
     /**
@@ -25,7 +43,7 @@ public class Funcionario {
      * 
      * @param novoId Novo id do funcionario
      */
-    public void setId(int novoId){
+    public void setId(int novoId) {
         this.id = novoId;
     }
 
