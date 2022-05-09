@@ -2,26 +2,37 @@ package br.ufpb.nycolas.db;
 
 import br.ufpb.nycolas.sistema.*;
 import java.util.ArrayList;
+// import java.io.Reader;
+// import java.nio.file.Files;
+// import java.nio.file.Paths;
 
 public class BancoDeDados {
 
     private ArrayList<OrdemDeServico> ordensDeServico;
     private ArrayList<Funcionario> funcionarios;
-    private String caminhoArquivo;
+    private ArrayList<Aparelho> aparelhos;
+    private String caminhoArquivoAparelhos = "/dados/aparelhos.csv";
+    private String caminhoArquivoFuncionarios = "/dados/funcionarios.csv";
+    private String caminhoArquivoOs = "/dados/ordensDeServico.csv";
 
     /**
      * 
      */
     public BancoDeDados() {
-        if (this.arquivoExiste()) {
-            this.lerAquivo();
+        if (this.arquivosExistem()) {
+            this.lerAquivos();
         } else {
-            this.criarNovoArquivo();
+            this.criarNovosArquivos();
         }
     }
 
-    public void consultarAparelhoPorNome() {
-        // TODO implement here
+    public Aparelho consultarAparelhoPorModelo(String nomeDoAparelho) {
+        for (Aparelho i : this.aparelhos) {
+            if (i.getModelo().equals(nomeDoAparelho)){
+                return i;
+            }
+        }
+        return null;
     }
 
     public void cadastrarNovoAparelho() {
@@ -41,16 +52,17 @@ public class BancoDeDados {
         // TODO implement here
     }
 
-    private void lerAquivo() {
+    protected void lerAquivos() {
         // TODO implement here
     }
 
-    private boolean arquivoExiste() {
-        // TODO implement here
-        return false;
+    protected boolean arquivosExistem() {
+        // TODO
+        boolean existe = false;
+        return existe;
     }
 
-    private void criarNovoArquivo(){
+    protected void criarNovosArquivos() {
         // TODO
     }
 }
