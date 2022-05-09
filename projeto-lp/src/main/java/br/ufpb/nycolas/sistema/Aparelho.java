@@ -5,11 +5,29 @@ public class Aparelho {
     private String marca;
     private String modelo;
     private String descricao;
+    
+    /**
+     * Construtor com todos os paramentros
+     * @param id Id do aparelho
+     * @param marca Marca do aparelho
+     * @param modelo Modelo do aparelho
+     * @param descrição Breve descrição do aparelho
+     */
+    public Aparelho(int id, String marca, String modelo, String descrição) {
+        this.id = id;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.descricao = descrição;
+    }  
 
     /**
-     * Default constructor
+     * Construtor padrão sem parametros
      */
     public Aparelho() {
+        this.id = 0;
+        this.marca = "";
+        this.modelo = "";
+        this.descricao = "";
     }
 
     /**
@@ -18,7 +36,7 @@ public class Aparelho {
     public int getId() {
         return this.id;
     }
-    
+
     /**
      * @param novoId Novo id do aparelho
      */
