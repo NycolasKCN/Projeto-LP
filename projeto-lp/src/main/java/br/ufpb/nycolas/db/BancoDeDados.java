@@ -13,6 +13,11 @@ public class BancoDeDados {
      * 
      */
     public BancoDeDados() {
+        if (this.arquivoExiste()) {
+            this.lerAquivo();
+        } else {
+            this.criarNovoArquivo();
+        }
     }
 
     public void consultarAparelhoPorNome() {
@@ -36,12 +41,16 @@ public class BancoDeDados {
         // TODO implement here
     }
 
-    public static void lerAquivo() {
+    private void lerAquivo() {
         // TODO implement here
     }
 
-    public static boolean AquivoExiste() {
+    private boolean arquivoExiste() {
         // TODO implement here
         return false;
+    }
+
+    private void criarNovoArquivo(){
+        // TODO
     }
 }

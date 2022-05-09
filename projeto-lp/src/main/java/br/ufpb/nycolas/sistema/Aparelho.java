@@ -1,7 +1,7 @@
 package br.ufpb.nycolas.sistema;
 
 public class Aparelho {
-    private int id;
+    private String id;
     private String marca;
     private String modelo;
     private String descricao;
@@ -13,7 +13,7 @@ public class Aparelho {
      * @param modelo Modelo do aparelho
      * @param descrição Breve descrição do aparelho
      */
-    public Aparelho(int id, String marca, String modelo, String descrição) {
+    public Aparelho(String id, String marca, String modelo, String descrição) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -24,7 +24,7 @@ public class Aparelho {
      * Construtor padrão sem parametros
      */
     public Aparelho() {
-        this.id = 0;
+        this.id = "0";
         this.marca = "";
         this.modelo = "";
         this.descricao = "";
@@ -33,14 +33,14 @@ public class Aparelho {
     /**
      * @return retorna o id do aparelho
      */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
     /**
      * @param novoId Novo id do aparelho
      */
-    public void setId(int novoId) {
+    public void setId(String novoId) {
         this.id = novoId;
     }
 
