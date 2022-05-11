@@ -6,29 +6,29 @@ import java.util.ArrayList;
 // import java.nio.file.Files;
 // import java.nio.file.Paths;
 
-public class BancoDeDados {
+public class ApiBancoDeDados {
 
     private ArrayList<OrdemDeServico> ordensDeServico;
     private ArrayList<Funcionario> funcionarios;
     private ArrayList<Aparelho> aparelhos;
-    private String caminhoArquivoAparelhos = "/dados/aparelhos.csv";
-    private String caminhoArquivoFuncionarios = "/dados/funcionarios.csv";
-    private String caminhoArquivoOs = "/dados/ordensDeServico.csv";
+
 
     /**
      * 
      */
-    public BancoDeDados() {
-        if (this.arquivosExistem()) {
-            this.lerAquivos();
-        } else {
-            this.criarNovosArquivos();
-        }
+    public ApiBancoDeDados() {
     }
 
-    public Aparelho consultarAparelhoPorModelo(String nomeDoAparelho) {
+    /**
+     * Consulta aparelhos pelo modelo, caso exista, retorna o aparelho
+     * caso não exista, retorna null
+     * 
+     * @param modeloDoAparelho modelo do aparelho a ser consulado
+     * @return retona o aparelho caso exista, e null caso não exista
+     */
+    public Aparelho consultarAparelhoPorModelo(String modeloDoAparelho) {
         for (Aparelho i : this.aparelhos) {
-            if (i.getModelo().equals(nomeDoAparelho)){
+            if (i.getModelo().equals(modeloDoAparelho)) {
                 return i;
             }
         }
@@ -50,19 +50,5 @@ public class BancoDeDados {
 
     public void registrarNovoFuncionario() {
         // TODO implement here
-    }
-
-    protected void lerAquivos() {
-        // TODO implement here
-    }
-
-    protected boolean arquivosExistem() {
-        // TODO
-        boolean existe = false;
-        return existe;
-    }
-
-    protected void criarNovosArquivos() {
-        // TODO
     }
 }

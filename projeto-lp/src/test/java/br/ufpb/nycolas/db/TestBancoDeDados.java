@@ -7,7 +7,6 @@ import org.junit.Test;
 public class TestBancoDeDados {
     @Test
     public void testArquivoExiste() {
-        BancoDeDados db = new BancoDeDados();
-        assertTrue(db.arquivosExistem());
+        ApiBancoDeDados db = new ApiBancoDeDados();
     }
 }
