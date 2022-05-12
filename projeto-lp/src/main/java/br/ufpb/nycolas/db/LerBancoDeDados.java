@@ -1,4 +1,7 @@
 package br.ufpb.nycolas.db;
+// import java.io.Reader;
+// import java.nio.file.Files;
+// import java.nio.file.Paths;
 
 public class LerBancoDeDados {
     private String caminhoArquivoAparelhos = "/dados/aparelhos.csv";

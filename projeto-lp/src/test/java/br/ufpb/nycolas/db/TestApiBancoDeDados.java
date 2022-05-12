@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Test;
 
-public class TestBancoDeDados {
+public class TestApiBancoDeDados {
     @Test
     public void testArquivoExiste() {
         ApiBancoDeDados db = new ApiBancoDeDados();

@@ -1,17 +1,16 @@
 package br.ufpb.nycolas.db;
 
-import br.ufpb.nycolas.sistema.*;
 import java.util.ArrayList;
-// import java.io.Reader;
-// import java.nio.file.Files;
-// import java.nio.file.Paths;
+
+import br.ufpb.nycolas.sistema.Aparelho;
+import br.ufpb.nycolas.sistema.Funcionario;
+import br.ufpb.nycolas.sistema.OrdemDeServico;
 
 public class ApiBancoDeDados {
 
     private ArrayList<OrdemDeServico> ordensDeServico;
     private ArrayList<Funcionario> funcionarios;
     private ArrayList<Aparelho> aparelhos;
-
 
     /**
      * 
@@ -35,20 +34,40 @@ public class ApiBancoDeDados {
         return null;
     }
 
-    public void cadastrarNovoAparelho() {
-        // TODO implement here
+    /**
+     * Cadastra um novo aparelho no banco de dados
+     * 
+     * @param novoAparelho
+     */
+    public void cadastrarNovoAparelho(Aparelho novoAparelho) {
+        // TODO
     }
 
+    /**
+     * Retorna uma ArrayList com todos os aparelhos
+     * 
+     * @return Retorna uma ArrayList com todos os aparelhos
+     */
     public ArrayList<Aparelho> consultarTodosAparelhos() {
-        // TODO implement here
+        // TODO
         return null;
     }
 
-    public void registrarNovaOS() {
-        // TODO implement here
+    /**
+     * Registra uma nova ordem de serviço no banco de dados
+     * 
+     * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
+     */
+    public void registrarNovaOS(OrdemDeServico novaOs) {
+        // TODO
     }
 
-    public void registrarNovoFuncionario() {
-        // TODO implement here
+    /**
+     * Registra um novo funcionario no banco de dados
+     * 
+     * @param novoFuncionario um novo funcionario a ser cadastrado no banco de dados
+     */
+    public void registrarNovoFuncionario(Funcionario novoFuncionario) {
+        // TODO
     }
 }
