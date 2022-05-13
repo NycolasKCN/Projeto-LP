@@ -14,7 +14,6 @@ import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
 
 public class Data {
-
     /**
      * Tenta conectar a o banco de dados. Retorna a conexão
      * 
@@ -29,6 +28,10 @@ public class Data {
             System.out.println(e.getMessage());
         }
         return conn;
+    }
+
+    public void creatTable(String tableName) {
+        
     }
 
     /**
