@@ -1,14 +1,26 @@
-package br.ufpb.nycolas.db;
+package br.ufpb.nycolas.dados;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class LerBancoDeDados {
+
+    private Connection connect() {
+        String url = "jdbc:sqlite:c:/BancoDeDados-LP/banco.db";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+
     public void lerAquivos() {
         // TODO
+        connect();
     }
 
     /**
@@ -26,9 +38,4 @@ public class LerBancoDeDados {
         }
         return existe;
     }
-
-    public void criarNovoArquivo() {
-        // TODO
-    }
-
 }
