@@ -11,10 +11,7 @@ public class Funcionario {
      * Construtor sem nenhum parametro
      */
     public Funcionario() {
-        this.id = 0;
-        this.nome = "";
-        this.usuario = "";
-        this.senha = "";
+        this(0,"","","");
     }
 
     /**

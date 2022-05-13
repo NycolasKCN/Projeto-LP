@@ -1,46 +1,52 @@
 package br.ufpb.nycolas.sistema;
 
+import java.text.Format;
+
 public class Aparelho {
-    private String id;
+    private int id;
     private String marca;
     private String modelo;
     private String descricao;
-    
+
     /**
      * Construtor com todos os paramentros
-     * @param id Id do aparelho
-     * @param marca Marca do aparelho
-     * @param modelo Modelo do aparelho
+     * 
+     * @param id        Id do aparelho
+     * @param marca     Marca do aparelho
+     * @param modelo    Modelo do aparelho
      * @param descrição Breve descrição do aparelho
      */
-    public Aparelho(String id, String marca, String modelo, String descrição) {
+    public Aparelho(int id, String marca, String modelo, String descrição) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.descricao = descrição;
-    }  
+    }
 
     /**
      * Construtor padrão sem parametros
      */
     public Aparelho() {
-        this.id = "0";
-        this.marca = "";
-        this.modelo = "";
-        this.descricao = "";
+        this(0, "", "", "");
+    }
+
+    @Override
+    public String toString() {
+        String s = String.format("%d ; %s ; %s ; %s", this.id, this.marca, this.modelo, this.descricao);
+        return s;
     }
 
     /**
      * @return retorna o id do aparelho
      */
-    public String getId() {
+    public int getId() {
         return this.id;
     }
 
     /**
      * @param novoId Novo id do aparelho
      */
-    public void setId(String novoId) {
+    public void setId(int novoId) {
         this.id = novoId;
     }
 

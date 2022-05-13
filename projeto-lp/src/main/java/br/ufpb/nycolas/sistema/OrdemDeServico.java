@@ -10,9 +10,7 @@ public class OrdemDeServico {
      * Construtor padrão, nenhum parametro
      */
     public OrdemDeServico() {
-        this.id = 0;
-        this.status = "";
-        this.descricaoProblema = "";
+        this(0,"","");
     }
 
     public OrdemDeServico(int id, String status, String descricao){

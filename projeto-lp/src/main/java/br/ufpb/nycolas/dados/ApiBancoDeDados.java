@@ -16,6 +16,8 @@ public class ApiBancoDeDados {
      * 
      */
     public ApiBancoDeDados() {
+        LerBancoDeDados init = new LerBancoDeDados();
+        this.aparelhos = init.populateAparelhos();
     }
 
     /**
