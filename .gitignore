@@ -1,8 +1,13 @@
 # Compiled class file
 *.class
-
+.classpath
+.project
+.settings/
 target/
-.vscode
+
+.vscode/
+projeto-lp/.vscode/
+projeto-lp/target
 
 # Log file
 *.log
