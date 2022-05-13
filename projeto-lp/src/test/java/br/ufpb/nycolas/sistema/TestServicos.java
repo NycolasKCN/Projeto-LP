@@ -1,15 +1,13 @@
-package br.ufpb.nycolas.dados;
+package br.ufpb.nycolas.sistema;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import br.ufpb.nycolas.sistema.Aparelho;
-import br.ufpb.nycolas.sistema.Funcionario;
 
-public class TestApiBancoDeDados {
+public class TestServicos {
     @Test
     public void testConsultarFuncionarioPeloNome() {
-        ApiBancoDeDados api = new ApiBancoDeDados();
+        Servicos api = new Servicos();
         String nomeFuncionarioExistente = "nycolas kevin";
         Funcionario f = api.consultarFuncionarioPeloNome(nomeFuncionarioExistente);
         assertEquals(nomeFuncionarioExistente, f.getNome());
@@ -23,7 +21,7 @@ public class TestApiBancoDeDados {
     @Test
     public void testConsultarAparelhoPeloModelo() {
         String modeloExistente = "Iphone 7 128gb";
-        ApiBancoDeDados api = new ApiBancoDeDados();
+        Servicos api = new Servicos();
         Aparelho a = api.consultarAparelhoPorModelo(modeloExistente);
         assertEquals(modeloExistente, a.getModelo());
 

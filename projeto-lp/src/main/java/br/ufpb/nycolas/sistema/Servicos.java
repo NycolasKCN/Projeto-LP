@@ -1,13 +1,11 @@
-package br.ufpb.nycolas.dados;
+package br.ufpb.nycolas.sistema;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufpb.nycolas.sistema.Aparelho;
-import br.ufpb.nycolas.sistema.Funcionario;
-import br.ufpb.nycolas.sistema.OrdemDeServico;
+import br.ufpb.nycolas.dados.LoadData;
 
-public class ApiBancoDeDados {
+public class Servicos {
 
     // private List<OrdemDeServico> ordensDeServico;
     private List<Funcionario> funcionarios;
@@ -16,10 +14,10 @@ public class ApiBancoDeDados {
     /**
      * 
      */
-    public ApiBancoDeDados() {
-        LerBancoDeDados init = new LerBancoDeDados();
-        this.aparelhos = init.populateAparelhos();
-        this.funcionarios = init.populateFuncionarios();
+    public Servicos() {
+        LoadData init = new LoadData();
+        this.aparelhos = init.loadAparelhos();
+        this.funcionarios = init.loadFuncionarios();
     }
 
     // ==================== Metodos Para Aparelhos =========================
@@ -89,7 +87,6 @@ public class ApiBancoDeDados {
                 return f;
             }
         }
-
         return null;
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
 
-public class LerBancoDeDados {
+public class LoadData {
 
     /**
      * Tenta conectar a o banco de dados. Retorna a conexão
@@ -31,12 +31,11 @@ public class LerBancoDeDados {
     }
 
     /**
-     * Popula um lista de objetos Aparelho, a partir do banco de dados SQL e a
-     * retorna.
+     * 
      * 
      * @return uma lista com todos os aparelhos dentro do banco de dados
      */
-    public List<Aparelho> populateAparelhos() {
+    public List<Aparelho> loadAparelhos() {
         String query = "SELECT rowid, marca, modelo, descricao FROM aparelhos";
 
         List<Aparelho> aparelhosList = new ArrayList<>();
@@ -71,12 +70,11 @@ public class LerBancoDeDados {
     }
 
     /**
-     * Popula um lista de objetos Funcionario, a partir do banco de dados SQL, e a
-     * retorna.
+     * 
      * 
      * @return uma lista com todos os Funcionario dentro do banco de dados
      */
-    public List<Funcionario> populateFuncionarios() {
+    public List<Funcionario> loadFuncionarios() {
         String query = "SELECT rowid, nome, usuario, senha FROM funcionarios";
 
         List<Funcionario> funcionariosList = new ArrayList<>();
@@ -111,6 +109,7 @@ public class LerBancoDeDados {
         }
         return funcionariosList;
     }
+    
 
     /**
      * Recebe um caminho de um arquivo e verifica se este arquivo existe

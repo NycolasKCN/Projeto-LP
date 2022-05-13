@@ -1,6 +1,6 @@
 package br.ufpb.nycolas.sistema;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class TestFuncionario {
     @Test
