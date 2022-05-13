@@ -10,7 +10,7 @@ import br.ufpb.nycolas.sistema.OrdemDeServico;
 public class ApiBancoDeDados {
 
     // private List<OrdemDeServico> ordensDeServico;
-    // sprivate List<Funcionario> funcionarios;
+    private List<Funcionario> funcionarios;
     private List<Aparelho> aparelhos;
 
     /**
@@ -19,7 +19,11 @@ public class ApiBancoDeDados {
     public ApiBancoDeDados() {
         LerBancoDeDados init = new LerBancoDeDados();
         this.aparelhos = init.populateAparelhos();
+        this.funcionarios = init.populateFuncionarios();
     }
+
+    // ==================== Metodos Para Aparelhos =========================
+
 
     /**
      * Consulta aparelhos pelo modelo, caso exista, retorna o aparelho
@@ -56,6 +60,9 @@ public class ApiBancoDeDados {
         return null;
     }
 
+    // ==================== Metodos Para Ordens de serviço =========================
+
+
     /**
      * Registra uma nova ordem de serviço no banco de dados
      * 
@@ -65,6 +72,8 @@ public class ApiBancoDeDados {
         // TODO
     }
 
+    // ==================== Metodos Para funcionarios =========================
+
     /**
      * Registra um novo funcionario no banco de dados
      * 
@@ -72,5 +81,15 @@ public class ApiBancoDeDados {
      */
     public void registrarNovoFuncionario(Funcionario novoFuncionario) {
         // TODO
+    }
+
+    public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) {
+        for (Funcionario f : this.funcionarios) {
+            if (f.getNome().equals(nomeFuncionario)) {
+                return f;
+            }
+        }
+
+        return null;
     }
 }

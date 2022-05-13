@@ -102,6 +102,10 @@ public class LerBancoDeDados {
                 funcionariosList.add(newFuncionario);
             }
 
+            conn.close();
+            stmt.close();
+            result.close();
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
