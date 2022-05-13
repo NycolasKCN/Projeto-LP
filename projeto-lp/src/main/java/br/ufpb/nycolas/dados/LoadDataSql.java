@@ -173,6 +173,7 @@ public class LoadDataSql implements Data {
     public boolean cadastrarOs() {
         // TODO Auto-generated method stub
         return false;
+    }
 
     /**
      * Recebe um caminho de um arquivo e verifica se este arquivo existe
