@@ -4,20 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufpb.nycolas.dados.Data;
+import br.ufpb.nycolas.dados.LoadDataSql;
 
 public class Servicos {
 
-    // private List<OrdemDeServico> ordensDeServico;
+    private List<OrdemDeServico> ordensDeServico;
     private List<Funcionario> funcionarios;
     private List<Aparelho> aparelhos;
+    private Data init = new LoadDataSql();
 
     /**
      * 
      */
     public Servicos() {
-        Data init = new Data();
-        this.aparelhos = init.loadAparelhos();
-        this.funcionarios = init.loadFuncionarios();
+        this.aparelhos = this.init.loadAparelhos();
+        this.funcionarios = this.init.loadFuncionarios();
+        this.ordensDeServico = this.init.loadOrdemDeServicos();
     }
 
     // ==================== Metodos Para Aparelhos =========================
