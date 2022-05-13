@@ -11,8 +11,9 @@ import java.util.List;
 
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
+import br.ufpb.nycolas.sistema.OrdemDeServico;
 
-public class LoadData {
+public class Data {
 
     /**
      * Tenta conectar a o banco de dados. Retorna a conexão
@@ -31,7 +32,7 @@ public class LoadData {
     }
 
     /**
-     * 
+     * Carrega os dados de aparelhos
      * 
      * @return uma lista com todos os aparelhos dentro do banco de dados
      */
@@ -70,7 +71,7 @@ public class LoadData {
     }
 
     /**
-     * 
+     * Carrega os dados de funcionarios
      * 
      * @return uma lista com todos os Funcionario dentro do banco de dados
      */
@@ -109,7 +110,41 @@ public class LoadData {
         }
         return funcionariosList;
     }
-    
+
+    public List<OrdemDeServico> loadOrdemDeServicos() {
+        String query = "SELECT rowid, nome, usuario, senha FROM funcionarios";
+
+        List<OrdemDeServico> osList = new ArrayList<>();
+
+        Connection conn = null;
+        Statement stmt = null;
+
+        try {
+            conn = this.connect();
+            conn.setAutoCommit(false);
+
+            stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+
+            while (result.next()) {
+                int id = result.getInt("rowid");
+                String status = result.getString("status");
+                String desc = result.getString("descricao");
+
+                OrdemDeServico newOs = new OrdemDeServico(id, status, desc);
+
+                osList.add(newOs);
+            }
+
+            conn.close();
+            stmt.close();
+            result.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return osList;
+    }
 
     /**
      * Recebe um caminho de um arquivo e verifica se este arquivo existe

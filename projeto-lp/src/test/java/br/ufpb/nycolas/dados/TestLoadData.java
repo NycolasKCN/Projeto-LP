@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class TestLoadData {
     @Test
     public void testCarregamentoDeDados() {
-        LoadData db = new LoadData();
+        Data db = new Data();
         List<Aparelho> listAparelhos = db.loadAparelhos();
         List<Funcionario> listFuncionarios = db.loadFuncionarios();
 

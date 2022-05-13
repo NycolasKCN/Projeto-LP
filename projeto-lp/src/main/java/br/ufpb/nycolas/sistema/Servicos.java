@@ -3,7 +3,7 @@ package br.ufpb.nycolas.sistema;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufpb.nycolas.dados.LoadData;
+import br.ufpb.nycolas.dados.Data;
 
 public class Servicos {
 
@@ -15,7 +15,7 @@ public class Servicos {
      * 
      */
     public Servicos() {
-        LoadData init = new LoadData();
+        Data init = new Data();
         this.aparelhos = init.loadAparelhos();
         this.funcionarios = init.loadFuncionarios();
     }
