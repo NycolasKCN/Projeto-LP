@@ -20,6 +20,15 @@ public class OrdemDeServico {
     }
 
     /**
+     * Representação da ordem de serviço em String
+     * @return Retorna todos os atributos separados por ";"
+     */
+    @Override
+    public String toString() {
+        return this.id + ";" + this.status + ";" + this.descricaoProblema;
+    }
+
+    /**
      * @return Retorna o id dessa OS
      */
     public int getId() {

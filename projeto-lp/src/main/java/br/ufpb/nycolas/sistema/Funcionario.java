@@ -11,21 +11,32 @@ public class Funcionario {
      * Construtor sem nenhum parametro
      */
     public Funcionario() {
-        this(0,"","","");
+        this(0, "", "", "");
     }
 
     /**
      * Construtor com todos os parametros
-     * @param id id do funcionario
-     * @param nome nome do funcionario
+     * 
+     * @param id      id do funcionario
+     * @param nome    nome do funcionario
      * @param usuario usuario para entrada do funcionario
-     * @param senha senha do funcionario
+     * @param senha   senha do funcionario
      */
     public Funcionario(int id, String nome, String usuario, String senha) {
         this.id = id;
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
+    }
+
+    /**
+     * Representação do Funcionario em String
+     * 
+     * @return Retorna todos os atributos separados por ";"
+     */
+    @Override
+    public String toString() {
+        return this.id + ";" + this.nome + ";" + this.usuario + ";" + this.senha;
     }
 
     /**

@@ -1,6 +1,7 @@
 package br.ufpb.nycolas.dados;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
@@ -8,9 +9,9 @@ import br.ufpb.nycolas.sistema.OrdemDeServico;
 
 public class ApiBancoDeDados {
 
-    // private ArrayList<OrdemDeServico> ordensDeServico;
-    // sprivate ArrayList<Funcionario> funcionarios;
-    private ArrayList<Aparelho> aparelhos;
+    // private List<OrdemDeServico> ordensDeServico;
+    // sprivate List<Funcionario> funcionarios;
+    private List<Aparelho> aparelhos;
 
     /**
      * 

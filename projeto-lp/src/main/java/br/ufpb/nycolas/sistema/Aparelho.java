@@ -1,7 +1,5 @@
 package br.ufpb.nycolas.sistema;
 
-import java.text.Format;
-
 public class Aparelho {
     private int id;
     private String marca;
@@ -30,10 +28,13 @@ public class Aparelho {
         this(0, "", "", "");
     }
 
+    /**
+     * Representação do aparelho em String
+     * @return Retorna todos os atributos separados por ";"
+     */
     @Override
     public String toString() {
-        String s = String.format("%d ; %s ; %s ; %s", this.id, this.marca, this.modelo, this.descricao);
-        return s;
+        return this.id + ";" + this.marca + ";" + this.modelo + ";" + this.descricao;
     }
 
     /**
