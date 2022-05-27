@@ -211,4 +211,28 @@ public class LoadDataSql implements Data {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public boolean apagarAparelho(Aparelho aparelho) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean apagarFuncionario(Funcionario funcionario) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean apagarOs(OrdemDeServico os) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean salvarDados() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }

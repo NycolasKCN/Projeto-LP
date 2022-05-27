@@ -3,6 +3,9 @@ package br.ufpb.nycolas.dados;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,9 +18,9 @@ public class LoadDataArq implements Data {
     private String caminhoAparelho = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
     private String caminhoFuncionario = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
     private String caminhoOs = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
-    private List<Aparelho> aparelhos = new ArrayList<>();
-    private List<Funcionario> funcionarios = new ArrayList<>();
-    private List<OrdemDeServico> ordemDeServicos = new ArrayList<>();
+    private List<Aparelho> aparelhos = new ArrayList<Aparelho>();
+    private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+    private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
 
     public LoadDataArq() {
         this.aparelhos = this.loadAparelhos();
@@ -36,7 +39,7 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoAparelho));
 
-                while (scan.hasNextLine()) {
+                while (scan.hasNextLine() && scan.nextLine().equals("")) {
                     String[] dados = scan.nextLine().split(";");
                     int id = Integer.parseInt(dados[0]);
                     String marca = dados[1];
@@ -62,7 +65,7 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoFuncionario));
 
-                while (scan.hasNextLine()) {
+                while (scan.hasNextLine() && scan.nextLine().equals("")) {
                     String[] dados = scan.nextLine().split(";");
                     int id = Integer.parseInt(dados[0]);
                     String nome = dados[1];
@@ -88,7 +91,7 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoOs));
 
-                while (scan.hasNextLine()) {
+                while (scan.hasNextLine() && scan.nextLine().equals("")) {
                     String[] dados = scan.nextLine().split(";");
                     int id = Integer.parseInt(dados[0]);
                     String status = dados[1];
@@ -124,19 +127,70 @@ public class LoadDataArq implements Data {
     }
 
     @Override
-    public boolean cadastrarAparelho(Aparelho aparelho) {
-        // TODO Auto-generated method stub
+    public boolean salvarDados() {
+        try {
+            FileWriter arqAparelhos = new FileWriter(caminhoAparelho);
+            PrintWriter gravarAparelhos = new PrintWriter(arqAparelhos);
+
+            FileWriter arqFuncionarios = new FileWriter(caminhoFuncionario);
+            PrintWriter gravarFuncionarios = new PrintWriter(arqFuncionarios);
+
+            FileWriter arqOs = new FileWriter(caminhoOs);
+            PrintWriter gravarOs = new PrintWriter(arqOs);
+
+            for (Aparelho a : this.aparelhos) {
+                gravarAparelhos.println(a.toString());
+            }
+
+            for (Funcionario f : this.funcionarios) {
+                gravarFuncionarios.println(f.toString());
+            }
+
+            for (OrdemDeServico o : this.ordemDeServicos) {
+                gravarOs.println(o.toString());
+            }
+            gravarAparelhos.close();
+            gravarFuncionarios.close();
+            gravarOs.close();
+            return true;
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         return false;
+    }
+
+    @Override
+    public boolean cadastrarAparelho(Aparelho aparelho) {
+        this.aparelhos.add(aparelho);
+        return true;
     }
 
     @Override
     public boolean cadastrarFuncionario(Funcionario funcionario) {
+        this.funcionarios.add(funcionario);
+        return true;
+    }
+
+    @Override
+    public boolean cadastrarOs(OrdemDeServico os) {
+        this.ordemDeServicos.add(os);
+        return true;
+    }
+
+    @Override
+    public boolean apagarAparelho(Aparelho aparelho) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public boolean cadastrarOs(OrdemDeServico os) {
+    public boolean apagarFuncionario(Funcionario funcionario) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean apagarOs(OrdemDeServico os) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -159,14 +213,15 @@ public class LoadDataArq implements Data {
     }
 
     public List<Aparelho> getAparelhos() {
-        return aparelhos;
+        return this.aparelhos;
     }
 
     public List<Funcionario> getFuncionarios() {
-        return funcionarios;
+        return this.funcionarios;
     }
 
     public List<OrdemDeServico> getOrdemDeServicos() {
-        return ordemDeServicos;
+        return this.ordemDeServicos;
     }
+
 }

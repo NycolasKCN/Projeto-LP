@@ -1,18 +1,21 @@
 package br.ufpb.nycolas.sistema;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 
+@Disabled
 public class TestServicos {
     @Test
     public void testConsultarFuncionarioPeloNome() {
         Servicos api = new Servicos();
-        String nomeFuncionarioExistente = "nycolas kevin";
+        String nomeFuncionarioExistente = "Nycolas Kevin";
         Funcionario f = api.consultarFuncionarioPeloNome(nomeFuncionarioExistente);
         assertEquals(nomeFuncionarioExistente, f.getNome());
 
-        String nomeFuncionarioInexistente = "yanni sophia";
+        String nomeFuncionarioInexistente = "yanii";
         Funcionario f2 = api.consultarFuncionarioPeloNome(nomeFuncionarioInexistente);
         assertEquals(null, f2);
 
@@ -25,7 +28,7 @@ public class TestServicos {
         Aparelho a = api.consultarAparelhoPorModelo(modeloExistente);
         assertEquals(modeloExistente, a.getModelo());
 
-        String modeloInexistente = "Asus s8";
+        String modeloInexistente = "lite preto";
         Aparelho a2 = api.consultarAparelhoPorModelo(modeloInexistente);
         assertEquals(null, a2);
 
