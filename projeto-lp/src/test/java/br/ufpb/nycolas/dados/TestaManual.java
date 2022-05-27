@@ -18,6 +18,7 @@ public class TestaManual{
         System.out.println("");
         for(OrdemDeServico a : loadData.getOrdemDeServicos()){
             System.out.println(a.toString());
+            System.out.println(a.getAparelhoVinculado().toString());
         }
     }
 }

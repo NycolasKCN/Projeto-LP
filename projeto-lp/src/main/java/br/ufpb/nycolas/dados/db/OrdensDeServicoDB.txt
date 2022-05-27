@@ -1,1 +1,4 @@
 30001;Em andamento;Iphone com tela trincada, de cor vermelha;10001;20001
+30002;Entregue;Xiaomi com tampa traseira quebrada;10002;20001
+30003;Recebido;Samsung com camera quebrada;10003;20003
+30004;Em andamento;;10004;20002

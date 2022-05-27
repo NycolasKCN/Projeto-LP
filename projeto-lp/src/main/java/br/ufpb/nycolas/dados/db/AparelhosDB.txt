@@ -1,1 +1,3 @@
 10001;Iphone;Iphone 7 plus vermelho;Aparelho com tela trincada e marcas na carcaça
+10002;Xiaomi;Note 10 lite preto;Aparelho com tampa trazeira quebrada
+10003;Sansumg;A10 branco; Aparelho com camera trazeira quebrada
