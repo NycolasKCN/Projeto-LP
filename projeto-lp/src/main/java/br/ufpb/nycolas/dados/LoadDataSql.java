@@ -3,6 +3,7 @@ package br.ufpb.nycolas.dados;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -158,19 +159,19 @@ public class LoadDataSql implements Data {
     }
 
     @Override
-    public boolean cadastrarAparelho() {
+    public boolean cadastrarAparelho(Aparelho aparelho) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public boolean cadastrarFuncionario() {
+    public boolean cadastrarFuncionario(Funcionario funcionario) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public boolean cadastrarOs() {
+    public boolean cadastrarOs(OrdemDeServico os) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -181,6 +182,7 @@ public class LoadDataSql implements Data {
      * @param caminhoAquivo o caminho completo de onde o arquivo se encontra
      * @return Retorna verdadeiro caso exista e falso caso não exista
      */
+    @Override
     public boolean arquivoExiste(String caminhoAquivo) {
         boolean existe = false;
         File fileAparelhos = new File(caminhoAquivo);

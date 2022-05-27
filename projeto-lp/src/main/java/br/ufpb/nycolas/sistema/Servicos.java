@@ -1,6 +1,5 @@
 package br.ufpb.nycolas.sistema;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.ufpb.nycolas.dados.Data;
@@ -55,9 +54,8 @@ public class Servicos {
      * 
      * @return Retorna uma ArrayList com todos os aparelhos
      */
-    public ArrayList<Aparelho> consultarTodosAparelhos() {
-        // TODO
-        return null;
+    public List<Aparelho> consultarTodosAparelhos() {
+        return this.aparelhos;
     }
 
     // ==================== Metodos Para Ordens de serviço =========================
@@ -70,6 +68,10 @@ public class Servicos {
      */
     public void registrarNovaOS(OrdemDeServico novaOs) {
         // TODO
+    }
+
+    public List<OrdemDeServico> consultarTodasOs(){
+        return this.ordensDeServico;
     }
 
     // ==================== Metodos Para funcionarios =========================

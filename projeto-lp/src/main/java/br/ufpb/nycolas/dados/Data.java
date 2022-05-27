@@ -9,8 +9,10 @@ public interface Data {
     public List<Funcionario> loadFuncionarios();
     public List<OrdemDeServico> loadOrdemDeServicos();
 
-    public boolean cadastrarAparelho();
-    public boolean cadastrarFuncionario();
-    public boolean cadastrarOs();
+    public boolean cadastrarAparelho(Aparelho aparelho);
+    public boolean cadastrarFuncionario(Funcionario funcionario);
+    public boolean cadastrarOs(OrdemDeServico os);
+
+    public boolean arquivoExiste(String caminho);
 
 }
