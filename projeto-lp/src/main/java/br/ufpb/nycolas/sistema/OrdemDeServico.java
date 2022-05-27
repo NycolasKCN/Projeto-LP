@@ -5,27 +5,34 @@ public class OrdemDeServico {
     private int id;
     private String status;
     private String descricaoProblema;
+    private Aparelho aparelhoVinculado;
+    private Funcionario funcionarioResponsavel;
 
     /**
      * Construtor padrão, nenhum parametro
      */
     public OrdemDeServico() {
-        this(0,"","");
+        this(0, "", "", new Aparelho(), new Funcionario());
     }
 
-    public OrdemDeServico(int id, String status, String descricao){
+    public OrdemDeServico(int id, String status, String descricao, Aparelho aparelhoVinculado,
+            Funcionario funcionarioResponsavel) {
         this.id = id;
         this.status = status;
         this.descricaoProblema = descricao;
+        this.aparelhoVinculado = aparelhoVinculado;
+        this.funcionarioResponsavel = funcionarioResponsavel;
     }
 
     /**
      * Representação da ordem de serviço em String
+     * 
      * @return Retorna todos os atributos separados por ";"
      */
     @Override
     public String toString() {
-        return this.id + ";" + this.status + ";" + this.descricaoProblema;
+        return this.id + ";" + this.status + ";" + this.descricaoProblema + ";" + this.aparelhoVinculado.getId() + ";"
+                + this.funcionarioResponsavel.getId();
     }
 
     /**
@@ -68,5 +75,33 @@ public class OrdemDeServico {
      */
     public void setDrescricaoProblema(String novaDescricao) {
         this.descricaoProblema = novaDescricao;
+    }
+
+    /**
+     * @return Retorna o aparelho Vinculado a está os
+     */
+    public Aparelho getAparelhoVinculado() {
+        return aparelhoVinculado;
+    }
+
+    /**
+     * @param aparelhoVinculado Novo Aparelho vinculado a OS
+     */
+    public void setAparelhoVinculado(Aparelho aparelhoVinculado) {
+        this.aparelhoVinculado = aparelhoVinculado;
+    }
+
+    /**
+     * @return Retorna o Funcionario responsavel pela os
+     */
+    public Funcionario getFuncionarioResponsavel() {
+        return funcionarioResponsavel;
+    }
+
+    /**
+     * @param funcionarioResponsavel Novo funcionario responsavel pela OS
+     */
+    public void setFuncionarioResponsavel(Funcionario funcionarioResponsavel) {
+        this.funcionarioResponsavel = funcionarioResponsavel;
     }
 }

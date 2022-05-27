@@ -10,7 +10,8 @@ public class TestOrdemDeServico {
         String status = "Na loja";
         String descricao = "Aparelho com problema no audio";
 
-        OrdemDeServico a = new OrdemDeServico(id, status, descricao);
+        // TODO: Atualizar os testes
+        OrdemDeServico a = new OrdemDeServico(id, status, descricao, new Aparelho(), new Funcionario());
         assertEquals(id, a.getId());
         assertEquals(status, a.getStatus());
         assertEquals(descricao, a.getDescricaoProblema());
@@ -34,8 +35,8 @@ public class TestOrdemDeServico {
         String novoStatus = "entregue";
         String novoDescricao = "Aparelho com tela trocada";
 
-
-        OrdemDeServico a = new OrdemDeServico(id, status, descricao);
+        // TODO: Atualizar os testes
+        OrdemDeServico a = new OrdemDeServico(id, status, descricao, new Aparelho(), new Funcionario());
 
         a.setId(novoId);
         a.setStatus(novoStatus);

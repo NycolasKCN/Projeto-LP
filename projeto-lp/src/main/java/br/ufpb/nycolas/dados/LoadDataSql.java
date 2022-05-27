@@ -143,7 +143,8 @@ public class LoadDataSql implements Data {
                 String status = result.getString("status");
                 String desc = result.getString("descricao");
 
-                OrdemDeServico newOs = new OrdemDeServico(id, status, desc);
+                // TODO: Fazer a tabela relacional e atualizar isso aq
+                OrdemDeServico newOs = new OrdemDeServico(id, status, desc, new Aparelho(), new Funcionario());
 
                 osList.add(newOs);
             }
