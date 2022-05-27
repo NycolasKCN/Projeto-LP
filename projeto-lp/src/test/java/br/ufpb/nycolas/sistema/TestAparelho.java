@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class TestAparelho {
     @Test
     public void TestaConstrutorTodosDeclarados() {
-        int id = 2;
+        String id = "2";
         String marca = "Apple";
         String modelo = "Iphone 7";
         String descrição = "chip da apple, fabricado na china";
@@ -29,14 +29,14 @@ public class TestAparelho {
 
     @Test
     public void testaSetters() {
-        int id = 1;
+        String id = "1";
         String marca = "xiomi";
         String modelo = "note 10";
         String descrição = "fabricado na china";
 
         Aparelho a = new Aparelho(id, marca, modelo, descrição);
 
-        a.setId(44);
+        a.setId("44");
         a.setMarca("xiaomi");
         a.setModelo("a10");
         a.setDescricao("a10, vermelho, camera 10 mp");

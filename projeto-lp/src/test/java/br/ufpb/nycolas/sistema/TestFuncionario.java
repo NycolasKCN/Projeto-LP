@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class TestFuncionario {
     @Test
     public void TestaConstrutorTodosDeclarados() {
-        int id = 2;
+        String id = "2";
         String nome = "Nycolas";
         String usuario = "nycol";
         String senha = "191102rt";
@@ -28,12 +28,12 @@ public class TestFuncionario {
 
     @Test
     public void testaSetters() {
-        int id = 1;
+        String id = "1";
         String nome = "Joselia Costa Nascimento";
         String usuario = "joselia";
         String senha = "191102rt";
 
-        int novoId = 44;
+        String novoId = "44";
         String novoNome = "Joselia Costa";
         String novoUsuario = "josel";
         String novaSenha = "Rt191102";

@@ -2,7 +2,7 @@ package br.ufpb.nycolas.sistema;
 
 public class Funcionario {
 
-    private int id;
+    private String id;
     private String nome;
     private String usuario;
     private String senha;
@@ -11,14 +11,14 @@ public class Funcionario {
      * Construtor sem nenhum parametro
      */
     public Funcionario() {
-        this(0, "", "", "");
+        this("0", "", "", "");
     }
 
     /**
      * Construtuor com apenas o id como parametro
      * @param id id do funcionario
      */
-    public Funcionario(int id) {
+    public Funcionario(String id) {
         this(id, "", "", "");
     }
 
@@ -30,7 +30,7 @@ public class Funcionario {
      * @param usuario usuario para entrada do funcionario
      * @param senha   senha do funcionario
      */
-    public Funcionario(int id, String nome, String usuario, String senha) {
+    public Funcionario(String id, String nome, String usuario, String senha) {
         this.id = id;
         this.nome = nome;
         this.usuario = usuario;
@@ -51,7 +51,7 @@ public class Funcionario {
      * 
      * @return Retorna o id do funcionario
      */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
@@ -59,7 +59,7 @@ public class Funcionario {
      * 
      * @param novoId Novo id do funcionario
      */
-    public void setId(int novoId) {
+    public void setId(String novoId) {
         this.id = novoId;
     }
 

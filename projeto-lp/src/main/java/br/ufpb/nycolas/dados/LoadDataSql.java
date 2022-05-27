@@ -56,7 +56,7 @@ public class LoadDataSql implements Data {
             ResultSet result = stmt.executeQuery(query);
 
             while (result.next()) {
-                int id = result.getInt("rowid");
+                String id = result.getString("rowid");
                 String marca = result.getString("marca");
                 String modelo = result.getString("modelo");
                 String descricao = result.getString("descricao");
@@ -97,7 +97,7 @@ public class LoadDataSql implements Data {
             ResultSet result = stmt.executeQuery(query);
 
             while (result.next()) {
-                int id = result.getInt("rowid");
+                String id = result.getString("rowid");
                 String nome = result.getString("nome");
                 String usuario = result.getString("usuario");
                 String senha = result.getString("senha");

@@ -39,9 +39,13 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoAparelho));
 
-                while (scan.hasNextLine() && scan.nextLine().equals("")) {
+                while (scan.hasNextLine()) {
+                    if (scan.next().equals("")){
+                        break;
+                    }
+                    System.out.println("To carregando aparelhos..");
                     String[] dados = scan.nextLine().split(";");
-                    int id = Integer.parseInt(dados[0]);
+                    String id = dados[0];
                     String marca = dados[1];
                     String modelo = dados[2];
                     String descricao = dados[3];
@@ -65,9 +69,10 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoFuncionario));
 
-                while (scan.hasNextLine() && scan.nextLine().equals("")) {
+                while (scan.hasNextLine() && !scan.nextLine().equals("")) {
+                    System.out.println("To carregando funcionarios..");
                     String[] dados = scan.nextLine().split(";");
-                    int id = Integer.parseInt(dados[0]);
+                    String id = dados[0];
                     String nome = dados[1];
                     String user = dados[2];
                     String senha = dados[3];
@@ -91,18 +96,19 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoOs));
 
-                while (scan.hasNextLine() && scan.nextLine().equals("")) {
+                while (scan.hasNextLine() && !scan.nextLine().equals("")) {
+                    System.out.println("To carregando os..");
                     String[] dados = scan.nextLine().split(";");
                     int id = Integer.parseInt(dados[0]);
                     String status = dados[1];
                     String descricao = dados[2];
-                    int idAparelho = Integer.parseInt(dados[3]);
-                    int idFuncionario = Integer.parseInt(dados[4]);
+                    String idAparelho = dados[3];
+                    String idFuncionario = dados[4];
                     Aparelho ap = new Aparelho(idAparelho);
                     Funcionario f = new Funcionario(idFuncionario);
 
                     for (Aparelho a : this.aparelhos) {
-                        if (a.getId() == idAparelho) {
+                        if (a.getId().equals(idAparelho)) {
                             ap = a;
                             break;
                         }
