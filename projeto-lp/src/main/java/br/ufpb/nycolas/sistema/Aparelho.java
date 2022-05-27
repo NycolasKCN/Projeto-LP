@@ -22,6 +22,14 @@ public class Aparelho {
     }
 
     /**
+     * Construtuor com apenas o id como parametro
+     * @param id id do Aparelho
+     */
+    public Aparelho(int id) {
+        this(id, "", "", "");
+    }
+
+    /**
      * Construtor padrão sem parametros
      */
     public Aparelho() {

@@ -3,22 +3,22 @@ package br.ufpb.nycolas.sistema;
 import java.util.List;
 
 import br.ufpb.nycolas.dados.Data;
-import br.ufpb.nycolas.dados.LoadDataSql;
+import br.ufpb.nycolas.dados.LoadDataArq;
 
 public class Servicos {
 
     private List<OrdemDeServico> ordensDeServico;
     private List<Funcionario> funcionarios;
     private List<Aparelho> aparelhos;
-    private Data init = new LoadDataSql();
+    private Data init = new LoadDataArq();
 
     /**
      * 
      */ 
     public Servicos() {
-        this.aparelhos = this.init.loadAparelhos();
-        this.funcionarios = this.init.loadFuncionarios();
-        this.ordensDeServico = this.init.loadOrdemDeServicos();
+        this.aparelhos = this.init.getAparelhos();
+        this.funcionarios = this.init.getFuncionarios();
+        this.ordensDeServico = this.init.getOrdemDeServicos();
     }
 
     // ==================== Metodos Para Aparelhos =========================

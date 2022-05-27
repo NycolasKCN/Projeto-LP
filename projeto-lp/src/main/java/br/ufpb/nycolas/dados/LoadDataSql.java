@@ -193,4 +193,22 @@ public class LoadDataSql implements Data {
         }
         return existe;
     }
+
+    @Override
+    public List<Aparelho> getAparelhos() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<Funcionario> getFuncionarios() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public List<OrdemDeServico> getOrdemDeServicos() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

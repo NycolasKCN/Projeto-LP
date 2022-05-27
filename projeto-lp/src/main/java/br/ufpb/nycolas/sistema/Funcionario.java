@@ -15,6 +15,14 @@ public class Funcionario {
     }
 
     /**
+     * Construtuor com apenas o id como parametro
+     * @param id id do funcionario
+     */
+    public Funcionario(int id) {
+        this(id, "", "", "");
+    }
+
+    /**
      * Construtor com todos os parametros
      * 
      * @param id      id do funcionario
