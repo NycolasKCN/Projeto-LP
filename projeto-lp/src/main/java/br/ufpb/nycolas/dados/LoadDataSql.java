@@ -139,7 +139,7 @@ public class LoadDataSql implements Data {
             ResultSet result = stmt.executeQuery(query);
 
             while (result.next()) {
-                int id = result.getInt("rowid");
+                String id = result.getString("rowid");
                 String status = result.getString("status");
                 String desc = result.getString("descricao");
 

@@ -2,7 +2,7 @@ package br.ufpb.nycolas.sistema;
 
 public class OrdemDeServico {
 
-    private int id;
+    private String id;
     private String status;
     private String descricaoProblema;
     private Aparelho aparelhoVinculado;
@@ -12,10 +12,10 @@ public class OrdemDeServico {
      * Construtor padrão, nenhum parametro
      */
     public OrdemDeServico() {
-        this(0, "", "", new Aparelho(), new Funcionario());
+        this("0", "vazio", "vazio", new Aparelho(), new Funcionario());
     }
 
-    public OrdemDeServico(int id, String status, String descricao, Aparelho aparelhoVinculado,
+    public OrdemDeServico(String id, String status, String descricao, Aparelho aparelhoVinculado,
             Funcionario funcionarioResponsavel) {
         this.id = id;
         this.status = status;
@@ -31,21 +31,20 @@ public class OrdemDeServico {
      */
     @Override
     public String toString() {
-        return this.id + ";" + this.status + ";" + this.descricaoProblema + ";" + this.aparelhoVinculado.getId() + ";"
-                + this.funcionarioResponsavel.getId();
+        return this.id + ";" + this.status + ";" + this.descricaoProblema + ";" + this.aparelhoVinculado.getId() + ";" + this.funcionarioResponsavel.getId() + ";";
     }
 
     /**
      * @return Retorna o id dessa OS
      */
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
     /**
      * @param novoId Novo id para essa OS
      */
-    public void setId(int novoId) {
+    public void setId(String novoId) {
         this.id = novoId;
     }
 

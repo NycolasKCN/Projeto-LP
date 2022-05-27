@@ -20,10 +20,10 @@ public class TestFuncionario {
     @Test
     public void testaConstrutorNenhumDeclarado() {
         Funcionario a = new Funcionario();
-        assertEquals(0, a.getId());
-        assertEquals("", a.getNome());
-        assertEquals("", a.getUsuario());
-        assertEquals("", a.getSenha());
+        assertEquals("0", a.getId());
+        assertEquals("vazio", a.getNome());
+        assertEquals("vazio", a.getUsuario());
+        assertEquals("vazio", a.getSenha());
     }
 
     @Test

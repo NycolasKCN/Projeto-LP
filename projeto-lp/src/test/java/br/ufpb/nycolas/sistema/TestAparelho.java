@@ -21,10 +21,10 @@ public class TestAparelho {
     @Test
     public void testaConstrutorNenhumDeclarado() {
         Aparelho a = new Aparelho();
-        assertEquals(0, a.getId());
-        assertEquals("", a.getMarca());
-        assertEquals("", a.getModelo());
-        assertEquals("", a.getDescricao());
+        assertEquals("0", a.getId());
+        assertEquals("vazio", a.getMarca());
+        assertEquals("vazio", a.getModelo());
+        assertEquals("vazio", a.getDescricao());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class TestAparelho {
         a.setModelo("a10");
         a.setDescricao("a10, vermelho, camera 10 mp");
 
-        assertEquals(44, a.getId());
+        assertEquals("44", a.getId());
         assertEquals("xiaomi", a.getMarca());
         assertEquals("a10", a.getModelo());
         assertEquals("a10, vermelho, camera 10 mp", a.getDescricao());

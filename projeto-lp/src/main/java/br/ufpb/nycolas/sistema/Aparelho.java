@@ -26,14 +26,14 @@ public class Aparelho {
      * @param id id do Aparelho
      */
     public Aparelho(String id) {
-        this(id, "", "", "");
+        this(id, "vazio", "vazio", "vazio");
     }
 
     /**
      * Construtor padrão sem parametros
      */
     public Aparelho() {
-        this("0", "", "", "");
+        this("0", "vazio", "vazio", "vazio");
     }
 
     /**
@@ -42,7 +42,7 @@ public class Aparelho {
      */
     @Override
     public String toString() {
-        return this.id + ";" + this.marca + ";" + this.modelo + ";" + this.descricao;
+        return this.id + ";" + this.marca + ";" + this.modelo + ";" + this.descricao + ";";
     }
 
     /**

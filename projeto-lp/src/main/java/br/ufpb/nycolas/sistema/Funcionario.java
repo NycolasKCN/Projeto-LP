@@ -11,7 +11,7 @@ public class Funcionario {
      * Construtor sem nenhum parametro
      */
     public Funcionario() {
-        this("0", "", "", "");
+        this("0", "vazio", "vazio", "vazio");
     }
 
     /**
@@ -19,7 +19,7 @@ public class Funcionario {
      * @param id id do funcionario
      */
     public Funcionario(String id) {
-        this(id, "", "", "");
+        this(id, "vazio", "vazio", "vazio");
     }
 
     /**
@@ -44,7 +44,7 @@ public class Funcionario {
      */
     @Override
     public String toString() {
-        return this.id + ";" + this.nome + ";" + this.usuario + ";" + this.senha;
+        return this.id + ";" + this.nome + ";" + this.usuario + ";" + this.senha + ";";
     }
 
     /**

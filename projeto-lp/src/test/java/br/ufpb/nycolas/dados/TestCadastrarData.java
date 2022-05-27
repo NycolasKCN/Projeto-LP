@@ -65,17 +65,17 @@ public class TestCadastrarData {
     public void testCadastrarOs() {
         Aparelho apA = new Aparelho("10002", "Samsung", "A10 256gb", "tela trincada");
         Funcionario fA = new Funcionario("20001", "Nycolas Kevin", "nyc", "191102");
-        OrdemDeServico a = new OrdemDeServico(30001, "Entregue", "Descrição....", apA, fA);
+        OrdemDeServico a = new OrdemDeServico("30001", "Entregue", "Descrição....", apA, fA);
         assertTrue(db.cadastrarOs(a));
 
         Aparelho apB = new Aparelho("10001", "Apple", "Iphone 7 128gb", "Camera trazeira quebrada");
         Funcionario fB = new Funcionario("20002", "Carla Costa", "nyc", "191102");
-        OrdemDeServico b = new OrdemDeServico(30002, "Não recebido", "Descrição......", apB, fB);
+        OrdemDeServico b = new OrdemDeServico("30002", "Não recebido", "Descrição......", apB, fB);
         assertTrue(db.cadastrarOs(b));
 
         Aparelho apC = new Aparelho("10002", "Samsung", "A10 256gb", "tela trincada");
         Funcionario fC = new Funcionario("20003", "Joselia Nascimento", "nyc", "191102");
-        OrdemDeServico c = new OrdemDeServico(30003, "Em andamento", "Aparelho etc etc", apC, fC);
+        OrdemDeServico c = new OrdemDeServico("30003", "Em andamento", "Aparelho etc etc", apC, fC);
         assertTrue(db.cadastrarOs(c));
     }
 }

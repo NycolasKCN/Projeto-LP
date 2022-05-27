@@ -99,7 +99,7 @@ public class LoadDataArq implements Data {
                 while (scan.hasNextLine() && !scan.nextLine().equals("")) {
                     System.out.println("To carregando os..");
                     String[] dados = scan.nextLine().split(";");
-                    int id = Integer.parseInt(dados[0]);
+                    String id = dados[0];
                     String status = dados[1];
                     String descricao = dados[2];
                     String idAparelho = dados[3];
@@ -108,13 +108,13 @@ public class LoadDataArq implements Data {
                     Funcionario f = new Funcionario(idFuncionario);
 
                     for (Aparelho a : this.aparelhos) {
-                        if (a.getId().equals(idAparelho)) {
+                        if (a.getId().equalsIgnoreCase(idAparelho)) {
                             ap = a;
                             break;
                         }
                     }
                     for (Funcionario fu : this.funcionarios) {
-                        if (fu.getId() == idFuncionario) {
+                        if (fu.getId().equalsIgnoreCase(idFuncionario)) {
                             f = fu;
                             break;
                         }
