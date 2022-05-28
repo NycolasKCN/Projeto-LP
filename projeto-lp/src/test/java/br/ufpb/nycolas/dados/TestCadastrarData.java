@@ -16,10 +16,10 @@ import org.junit.jupiter.api.BeforeAll;
 @TestInstance(Lifecycle.PER_CLASS)
 public class TestCadastrarData {
 
-    private LoadDataArq db = new LoadDataArq();
+    private LoadDataArq db;
 
-    // @BeforeAll
-    public static void deletandoEcriandoNovosDados() {
+    @BeforeAll
+    public void deletandoEcriandoNovosDados() {
         String caminhoAparelho = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
         String caminhoFuncionario = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
         String caminhoOs = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
@@ -30,6 +30,8 @@ public class TestCadastrarData {
         fileAparelho.delete();
         fileFuncionarios.delete();
         fileOs.delete();
+
+        db = new LoadDataArq();
     }
 
     @AfterAll

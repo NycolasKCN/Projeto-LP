@@ -40,10 +40,6 @@ public class LoadDataArq implements Data {
                 Scanner scan = new Scanner(new FileReader(caminhoAparelho));
 
                 while (scan.hasNextLine()) {
-                    if (scan.next().equals("")){
-                        break;
-                    }
-                    System.out.println("To carregando aparelhos..");
                     String[] dados = scan.nextLine().split(";");
                     String id = dados[0];
                     String marca = dados[1];
@@ -69,8 +65,7 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoFuncionario));
 
-                while (scan.hasNextLine() && !scan.nextLine().equals("")) {
-                    System.out.println("To carregando funcionarios..");
+                while (scan.hasNextLine()) {
                     String[] dados = scan.nextLine().split(";");
                     String id = dados[0];
                     String nome = dados[1];
@@ -96,8 +91,7 @@ public class LoadDataArq implements Data {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoOs));
 
-                while (scan.hasNextLine() && !scan.nextLine().equals("")) {
-                    System.out.println("To carregando os..");
+                while (scan.hasNextLine()) {
                     String[] dados = scan.nextLine().split(";");
                     String id = dados[0];
                     String status = dados[1];
@@ -185,19 +179,34 @@ public class LoadDataArq implements Data {
 
     @Override
     public boolean apagarAparelho(Aparelho aparelho) {
-        // TODO Auto-generated method stub
+        for (Aparelho a : this.aparelhos){
+            if (a.getId().equals(aparelho.getId())){
+                aparelhos.remove(a);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public boolean apagarFuncionario(Funcionario funcionario) {
-        // TODO Auto-generated method stub
+        for (Funcionario f : this.funcionarios){
+            if (f.getId().equals(funcionario.getId())){
+                funcionarios.remove(f);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public boolean apagarOs(OrdemDeServico os) {
-        // TODO Auto-generated method stub
+    public boolean apagarOs(OrdemDeServico ordemDeServico) {
+        for (OrdemDeServico o : this.ordemDeServicos){
+            if (o.getId().equals(ordemDeServico.getId())){
+                ordemDeServicos.remove(o);
+                return true;
+            }
+        }
         return false;
     }
 
