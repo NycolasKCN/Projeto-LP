@@ -16,10 +16,22 @@ public class Funcionario {
 
     /**
      * Construtuor com apenas o id como parametro
+     * 
      * @param id id do funcionario
      */
     public Funcionario(String id) {
         this(id, "vazio", "vazio", "vazio");
+    }
+
+     /**
+     * Construtuor passando nome, usuario e senha
+     * 
+     * @param nome nome completo do funcionario
+     * @param usuario usuario para entrar no sistema
+     * @param senha senha para entrar no sistema
+     */
+    public Funcionario(String nome, String usuario, String senha) {
+        this("0", nome, usuario, senha);
     }
 
     /**

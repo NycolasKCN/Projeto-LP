@@ -8,15 +8,7 @@ public class OrdemDeServico {
     private Aparelho aparelhoVinculado;
     private Funcionario funcionarioResponsavel;
 
-    /**
-     * Construtor padrão, nenhum parametro
-     */
-    public OrdemDeServico() {
-        this("0", "vazio", "vazio", new Aparelho(), new Funcionario());
-    }
-
-    public OrdemDeServico(String id, String status, String descricao, Aparelho aparelhoVinculado,
-            Funcionario funcionarioResponsavel) {
+    public OrdemDeServico(String id, String status, String descricao, Aparelho aparelhoVinculado, Funcionario funcionarioResponsavel) {
         this.id = id;
         this.status = status;
         this.descricaoProblema = descricao;
@@ -25,13 +17,28 @@ public class OrdemDeServico {
     }
 
     /**
+     * Construtor padrão, nenhum parametro
+     */
+    public OrdemDeServico() {
+        this("0", "vazio", "vazio", new Aparelho(), new Funcionario());
+    }
+
+    /**
+     * Construtor padrão, nenhum parametro
+     */
+    public OrdemDeServico(String status, String descricao, Aparelho ap, Funcionario fu){
+        this("0",status, descricao, ap, fu);
+    } 
+
+    /**
      * Representação da ordem de serviço em String
      * 
      * @return Retorna todos os atributos separados por ";"
      */
     @Override
     public String toString() {
-        return this.id + ";" + this.status + ";" + this.descricaoProblema + ";" + this.aparelhoVinculado.getId() + ";" + this.funcionarioResponsavel.getId() + ";";
+        return this.id + ";" + this.status + ";" + this.descricaoProblema + ";" + this.aparelhoVinculado.getId() + ";"
+                + this.funcionarioResponsavel.getId() + ";";
     }
 
     /**

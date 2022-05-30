@@ -7,18 +7,16 @@ import br.ufpb.nycolas.dados.LoadDataArq;
 
 public class Servicos {
 
-    private List<OrdemDeServico> ordensDeServico;
-    private List<Funcionario> funcionarios;
-    private List<Aparelho> aparelhos;
-    private Data init = new LoadDataArq();
+    private Data data  = new LoadDataArq();
 
     /**
      * 
      */ 
     public Servicos() {
-        this.aparelhos = this.init.getAparelhos();
-        this.funcionarios = this.init.getFuncionarios();
-        this.ordensDeServico = this.init.getOrdemDeServicos();
+    }
+
+    public void salvar(){
+        data.salvarDados();
     }
 
     // ==================== Metodos Para Aparelhos =========================
@@ -32,7 +30,7 @@ public class Servicos {
      * @return retona o aparelho caso exista, e null caso não exista
      */
     public Aparelho consultarAparelhoPorModelo(String modeloDoAparelho) {
-        for (Aparelho i : this.aparelhos) {
+        for (Aparelho i : data.getAparelhos()) {
             if (i.getModelo().equals(modeloDoAparelho)) {
                 return i;
             }
@@ -45,8 +43,14 @@ public class Servicos {
      * 
      * @param novoAparelho
      */
-    public void cadastrarNovoAparelho(Aparelho novoAparelho) {
-        // TODO
+    public Aparelho cadastrarNovoAparelho(String marca, String modelo, String descricao) {
+        Aparelho newAparelho = new Aparelho(marca, modelo, descricao);
+        data.cadastrarAparelho(newAparelho);
+        return newAparelho;
+    }
+
+    public void apagarAparelho(Aparelho ap){
+        data.apagarAparelho(ap);
     }
 
     /**
@@ -55,7 +59,7 @@ public class Servicos {
      * @return Retorna uma ArrayList com todos os aparelhos
      */
     public List<Aparelho> consultarTodosAparelhos() {
-        return this.aparelhos;
+        return data.getAparelhos();
     }
 
     // ==================== Metodos Para Ordens de serviço =========================
@@ -66,12 +70,13 @@ public class Servicos {
      * 
      * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
      */
-    public void registrarNovaOS(OrdemDeServico novaOs) {
-        // TODO
+    public void cadastrarNovaOs(String status, String descricao, Aparelho ap, Funcionario fu) {
+        OrdemDeServico os = new OrdemDeServico(status, descricao, ap, fu);
+        data.cadastrarOs(os);
     }
 
     public List<OrdemDeServico> consultarTodasOs(){
-        return this.ordensDeServico;
+        return data.getOrdemDeServicos();
     }
 
     // ==================== Metodos Para funcionarios =========================
@@ -80,13 +85,16 @@ public class Servicos {
      * Registra um novo funcionario no banco de dados
      * 
      * @param novoFuncionario um novo funcionario a ser cadastrado no banco de dados
+     * @return Retorna o Funcionario que foi cadastrado
      */
-    public void registrarNovoFuncionario(Funcionario novoFuncionario) {
-        // TODO
+    public Funcionario cadastrarNovoFuncionario(String nome, String user, String senha) {
+        Funcionario newFuncionario = new Funcionario(nome, user, senha);
+        data.cadastrarFuncionario(newFuncionario);
+        return newFuncionario;
     }
 
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) {
-        for (Funcionario f : this.funcionarios) {
+        for (Funcionario f : data.getFuncionarios()) {
             if (f.getNome().equals(nomeFuncionario)) {
                 return f;
             }

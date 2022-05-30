@@ -29,6 +29,10 @@ public class Aparelho {
         this(id, "vazio", "vazio", "vazio");
     }
 
+    public Aparelho(String marca, String modelo, String descrição) {
+        this("0", marca, modelo, descrição);
+    }
+
     /**
      * Construtor padrão sem parametros
      */
