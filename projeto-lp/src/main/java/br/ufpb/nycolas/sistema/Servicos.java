@@ -7,20 +7,19 @@ import br.ufpb.nycolas.dados.LoadDataArq;
 
 public class Servicos {
 
-    private Data data  = new LoadDataArq();
+    private Data data = new LoadDataArq();
 
     /**
      * 
-     */ 
+     */
     public Servicos() {
     }
 
-    public void salvar(){
+    public void salvar() {
         data.salvarDados();
     }
 
     // ==================== Metodos Para Aparelhos =========================
-
 
     /**
      * Consulta aparelhos pelo modelo, caso exista, retorna o aparelho
@@ -49,7 +48,7 @@ public class Servicos {
         return newAparelho;
     }
 
-    public void apagarAparelho(Aparelho ap){
+    public void apagarAparelho(Aparelho ap) {
         data.apagarAparelho(ap);
     }
 
@@ -64,7 +63,6 @@ public class Servicos {
 
     // ==================== Metodos Para Ordens de serviço =========================
 
-
     /**
      * Registra uma nova ordem de serviço no banco de dados
      * 
@@ -75,7 +73,11 @@ public class Servicos {
         data.cadastrarOs(os);
     }
 
-    public List<OrdemDeServico> consultarTodasOs(){
+    public void apagarOs(OrdemDeServico os) {
+        data.apagarOs(os);
+    }
+
+    public List<OrdemDeServico> consultarTodasOs() {
         return data.getOrdemDeServicos();
     }
 
@@ -91,6 +93,10 @@ public class Servicos {
         Funcionario newFuncionario = new Funcionario(nome, user, senha);
         data.cadastrarFuncionario(newFuncionario);
         return newFuncionario;
+    }
+
+    public void apagarFuncionario(Funcionario f) {
+        data.apagarFuncionario(f);
     }
 
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) {
