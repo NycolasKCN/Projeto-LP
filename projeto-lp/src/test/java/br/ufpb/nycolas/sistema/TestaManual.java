@@ -5,7 +5,7 @@ public class TestaManual {
         Servicos servico = new Servicos();
 
         Aparelho a = servico.cadastrarNovoAparelho("apple", "Iphone 13 pro", "Lacrado");
-        Funcionario f = servico.consultarFuncionarioPeloNome("Nycolas Kevin");
+        Funcionario f = servico.cadastrarNovoFuncionario("Nycolas Kevin", "nyc", "191102rt");
         servico.cadastrarNovaOs("Recebido", "Aparelho lacrado, mas não liga", a, f);
         servico.salvar();
 

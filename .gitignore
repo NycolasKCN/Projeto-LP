@@ -9,7 +9,8 @@ target/
 projeto-lp/.vscode/
 projeto-lp/target
 
-projeto-lp/src/main/java/br/ufpb/nycolas/dados/db/
+**/db
+?DB
 
 # Log file
 *.log

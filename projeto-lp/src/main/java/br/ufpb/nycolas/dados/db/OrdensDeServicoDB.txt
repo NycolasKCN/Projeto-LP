@@ -1,4 +1,4 @@
 30001;Entregue;Descrição....;10002;20001;
 30002;Não recebido;Descrição......;10001;20002;
-30003;Em andamento;Aparelho etc etc;10003;20003;
-0;Recebido;Aparelho lacrado, mas não liga;0;20001;
+30003;Em andamento;Aparelho etc etc;10002;20003;
+0;Recebido;Aparelho lacrado, mas não liga;0;0;
