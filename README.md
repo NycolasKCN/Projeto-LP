@@ -1,2 +1,2 @@
 # Projeto De linguagem de programação
-Projeto da terceira unidade da disciplina de Linguagem de programação
+Projeto da terceira unidade da disciplina de Linguagem de programação. O sistema consiste em resolver o problema de gerenciamento de dispositivos de uma loja que oferece assistência técnica a aparelhos moveis, criando uma ordem de serviço para o cliente. O sistema possui cadastro e consulta de aparelhos, funcionários e Ordens de serviço.
