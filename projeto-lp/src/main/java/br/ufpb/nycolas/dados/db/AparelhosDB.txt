@@ -1,4 +1,0 @@
-0;vazio;vazio;vazio;
-10001;Apple;Iphone 7 128gb;Camera trazeira quebrada;
-10002;Samsung;A10 256gb;tela trincada;
-0;apple;Iphone 13 pro;Lacrado;
