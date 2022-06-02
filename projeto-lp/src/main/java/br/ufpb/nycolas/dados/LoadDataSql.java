@@ -14,7 +14,7 @@ import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
 
-public class LoadDataSql implements Data {
+public class LoadDataSql {
     /**
      * Tenta conectar a o banco de dados. Retorna a conexão
      * 
@@ -40,7 +40,7 @@ public class LoadDataSql implements Data {
      * 
      * @return uma lista com todos os aparelhos dentro do banco de dados
      */
-    @Override
+
     public List<Aparelho> loadAparelhos() {
         String query = "SELECT rowid, marca, modelo, descricao FROM aparelhos";
 
@@ -80,7 +80,6 @@ public class LoadDataSql implements Data {
      * 
      * @return uma lista com todos os Funcionario dentro do banco de dados
      */
-    @Override
     public List<Funcionario> loadFuncionarios() {
         String query = "SELECT rowid, nome, usuario, senha FROM funcionarios";
 
@@ -122,7 +121,6 @@ public class LoadDataSql implements Data {
      * 
      * @return uma lista com todos as OS dentro do banco de dados
      */
-    @Override
     public List<OrdemDeServico> loadOrdemDeServicos() {
         String query = "SELECT rowid, nome, usuario, senha FROM funcionarios";
 
@@ -159,19 +157,16 @@ public class LoadDataSql implements Data {
         return osList;
     }
 
-    @Override
     public boolean cadastrarAparelho(Aparelho aparelho) {
         // TODO Auto-generated method stub
         return false;
     }
 
-    @Override
     public boolean cadastrarFuncionario(Funcionario funcionario) {
         // TODO Auto-generated method stub
         return false;
     }
 
-    @Override
     public boolean cadastrarOs(OrdemDeServico os) {
         // TODO Auto-generated method stub
         return false;
@@ -183,7 +178,6 @@ public class LoadDataSql implements Data {
      * @param caminhoAquivo o caminho completo de onde o arquivo se encontra
      * @return Retorna verdadeiro caso exista e falso caso não exista
      */
-    @Override
     public boolean arquivoExiste(String caminhoAquivo) {
         boolean existe = false;
         File fileAparelhos = new File(caminhoAquivo);
@@ -194,43 +188,36 @@ public class LoadDataSql implements Data {
         return existe;
     }
 
-    @Override
     public List<Aparelho> getAparelhos() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
     public List<Funcionario> getFuncionarios() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
     public List<OrdemDeServico> getOrdemDeServicos() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
     public boolean apagarAparelho(Aparelho aparelho) {
         // TODO Auto-generated method stub
         return false;
     }
 
-    @Override
     public boolean apagarFuncionario(Funcionario funcionario) {
         // TODO Auto-generated method stub
         return false;
     }
 
-    @Override
     public boolean apagarOs(OrdemDeServico os) {
         // TODO Auto-generated method stub
         return false;
     }
 
-    @Override
     public boolean salvarDados() {
         // TODO Auto-generated method stub
         return false;
