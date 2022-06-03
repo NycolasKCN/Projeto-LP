@@ -2,8 +2,13 @@ package br.ufpb.nycolas.ui;
 
 import java.util.Scanner;
 
-public class UiTerminal {
-    public static void main(String[] args) {
+public class MenuTerminal implements Menu {
+
+    public MenuTerminal(){
+        this.init();
+    }
+    
+    public void init() {
         Scanner scan = new Scanner(System.in);
 
         boolean continuar = true;
