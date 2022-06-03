@@ -5,6 +5,7 @@ import java.util.List;
 import br.ufpb.nycolas.sistema.*;
 
 public interface Data {
+
     public List<Aparelho> loadAparelhos();
 
     public List<Funcionario> loadFuncionarios();

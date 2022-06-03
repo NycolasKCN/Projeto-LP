@@ -43,7 +43,8 @@ public class UiTerminal {
                     } else {
                         System.out.println("Operação invalida! tente novamente.");
                     }
-                }
+                } // fim do loop: menu de cadastros
+
             } else if (operacao.equals("2")) {
 
                 while (true) {
@@ -66,7 +67,7 @@ public class UiTerminal {
                     } else {
                         System.out.println("Operação invalida! tente novamente.");
                     }
-                }
+                } // fim do loop: menu consultas
 
             } else if (operacao.equals("3")) {
 
@@ -90,11 +91,11 @@ public class UiTerminal {
                     } else {
                         System.out.println("Operação invalida! tente novamente.");
                     }
-                }
+                } // fim do loop: menu apagar
             } else {
                 System.out.println("Operação invalida, Tente novamente!");
             }
-        }
+        } // fim do loop: menu principal
 
         System.out.println("Fim do programa!");
         scan.close();
