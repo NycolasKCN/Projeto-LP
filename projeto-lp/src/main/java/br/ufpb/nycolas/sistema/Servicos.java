@@ -57,7 +57,7 @@ public class Servicos {
      * 
      * @return Retorna uma ArrayList com todos os aparelhos
      */
-    public List<Aparelho> consultarTodosAparelhos() {
+    public List<Aparelho> getAparelhos() {
         return data.getAparelhos();
     }
 
@@ -78,7 +78,7 @@ public class Servicos {
         data.apagarOs(os);
     }
 
-    public List<OrdemDeServico> consultarTodasOs() {
+    public List<OrdemDeServico> getOs() {
         return data.getOrdemDeServicos();
     }
 
@@ -107,5 +107,9 @@ public class Servicos {
             }
         }
         return null;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return data.getFuncionarios();
     }
 }

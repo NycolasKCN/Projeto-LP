@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
+import br.ufpb.nycolas.sistema.OrdemDeServico;
 import br.ufpb.nycolas.sistema.Servicos;
 
 public class MenuTerminal implements Menu {
@@ -38,33 +39,10 @@ public class MenuTerminal implements Menu {
             } else if (operacao.equals("1")) { // Cadastros
                 loopCadastros();
 
-            } else if (operacao.equals("2")) { // Consultas 
+            } else if (operacao.equals("2")) { // Consultas
                 loopConsultas();
-            } else if (operacao.equals("3")) { // Ordem de serviço
-
-                while (true) {
-                    clean();
-                    System.out.println("===== Apagar =====");
-                    System.out.println("1. Apagar Aparelho");
-                    System.out.println("2. Apagar Funcionario");
-                    System.out.println("3. Apagar Ordem de serviço");
-                    System.out.println("0. Voltar");
-                    System.out.print("Operação: ");
-                    String operacaoCad = scan.nextLine();
-
-                    if (operacaoCad.equals("0")) {
-                        break;
-                    } else if (operacaoCad.equals("1")) {
-
-                    } else if (operacaoCad.equals("2")) {
-
-                    } else if (operacaoCad.equals("3")) {
-
-                    } else {
-                        System.out.println("Operação invalida! tente novamente.");
-                        espere();
-                    }
-                } // fim do loop: menu apagar
+            } else if (operacao.equals("3")) { // Apagar
+                loopApagar();
             } else if (operacao.equals("4")) {
                 sistema.salvar();
                 System.out.println("Informações salvas");
@@ -96,50 +74,12 @@ public class MenuTerminal implements Menu {
             if (operacaoCad.equals("0")) {
                 break;
             } else if (operacaoCad.equals("1")) {
-                clean();
-                String marca, modelo, descricao;
-                System.out.println("===== Cadastro de Aparelho =====");
-                System.out.print("Marca do Aparelho: ");
-                marca = scan.nextLine();
-                System.out.print("Modelo do aparelho: ");
-                modelo = scan.nextLine();
-                System.out.print("Descrição: ");
-                descricao = scan.nextLine();
-
-                sistema.cadastrarNovoAparelho(marca, modelo, descricao);
-                System.out.println("Cadastro realizado com sucesso!");
-                espere();
-
+                cadAparelho();
             } else if (operacaoCad.equals("2")) {
-                clean();
-                String nome, user, senha;
-                System.out.println("===== Cadasto de Funcionários =====");
-                System.out.print("Nome do Funcionário: ");
-                nome = scan.nextLine();
-                System.out.print("Nome de Usuário: ");
-                user = scan.nextLine();
-                System.out.print("Senha: ");
-                senha = scan.nextLine();
-
-                sistema.cadastrarNovoFuncionario(nome, user, senha);
-                System.out.println("Funcionário cadastrado com sucesso!");
-                espere();
+                cadFuncionario();
 
             } else if (operacaoCad.equals("3")) {
-                clean();
-                String status, descricao; // ap, fu;
-                System.out.println("===== Cadasto de Ordem de serviço =====");
-                System.out.print("Status: ");
-                status = scan.nextLine();
-                System.out.print("Descrição: ");
-                descricao = scan.nextLine();
-                System.out.print("Aparelho: ");
-                // ap = scan.nextLine();
-                System.out.print("Funcionario: ");
-                // fu = scan.nextLine();
-
-                sistema.cadastrarNovaOs(status, descricao, new Aparelho(), new Funcionario());
-                espere();
+                cadOs();
             } else {
                 System.out.println("Operação invalida! tente novamente.");
                 espere();
@@ -161,7 +101,33 @@ public class MenuTerminal implements Menu {
             if (operacaoCad.equals("0")) {
                 break;
             } else if (operacaoCad.equals("1")) {
+                tabelaAparelho();
+            } else if (operacaoCad.equals("2")) {
+                tabelaFuncionario();
+            } else if (operacaoCad.equals("3")) {
+                tabelaOs();
+            } else {
+                System.out.println("Operação invalida! tente novamente.");
+                espere();
+            }
+        } // fim do loop: menu consultas
+    }
 
+    private void loopApagar() {
+        while (true) {
+            clean();
+            System.out.println("===== Apagar =====");
+            System.out.println("1. Apagar Aparelho");
+            System.out.println("2. Apagar Funcionario");
+            System.out.println("3. Apagar Ordem de serviço");
+            System.out.println("0. Voltar");
+            System.out.print("Operação: ");
+            String operacaoCad = scan.nextLine();
+
+            if (operacaoCad.equals("0")) {
+                break;
+            } else if (operacaoCad.equals("1")) {
+                
             } else if (operacaoCad.equals("2")) {
 
             } else if (operacaoCad.equals("3")) {
@@ -170,7 +136,105 @@ public class MenuTerminal implements Menu {
                 System.out.println("Operação invalida! tente novamente.");
                 espere();
             }
-        } // fim do loop: menu consultas
+        } // fim do loop: menu apagar
+    }
+
+    private void cadAparelho() {
+        clean();
+        String marca, modelo, descricao;
+        System.out.println("===== Cadastro de Aparelho =====");
+        System.out.print("Marca do Aparelho: ");
+        marca = scan.nextLine();
+        System.out.print("Modelo do aparelho: ");
+        modelo = scan.nextLine();
+        System.out.print("Descrição: ");
+        descricao = scan.nextLine();
+
+        sistema.cadastrarNovoAparelho(marca, modelo, descricao);
+        System.out.println("Cadastro realizado com sucesso!");
+        espere();
+
+    }
+
+    private void cadFuncionario() {
+        clean();
+        String nome, user, senha;
+        System.out.println("===== Cadasto de Funcionários =====");
+        System.out.print("Nome do Funcionário: ");
+        nome = scan.nextLine();
+        System.out.print("Nome de Usuário: ");
+        user = scan.nextLine();
+        System.out.print("Senha: ");
+        senha = scan.nextLine();
+
+        sistema.cadastrarNovoFuncionario(nome, user, senha);
+        System.out.println("Funcionário cadastrado com sucesso!");
+        espere();
+    }
+
+    private void cadOs() {
+        clean();
+        String status, descricao; // ap, fu;
+        System.out.println("===== Cadasto de Ordem de serviço =====");
+        System.out.print("Status: ");
+        status = scan.nextLine();
+        System.out.print("Descrição: ");
+        descricao = scan.nextLine();
+        System.out.print("Aparelho: ");
+        // ap = scan.nextLine();
+        System.out.print("Funcionario: ");
+        // fu = scan.nextLine();
+
+        sistema.cadastrarNovaOs(status, descricao, new Aparelho(), new Funcionario());
+        espere();
+    }
+
+    private void tabelaAparelho() {
+        clean();
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.printf("%10s %20s %20s", "ID", "MARCA", "MODELO");
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------------------");
+
+        for (Aparelho a : sistema.getAparelhos()) {
+            System.out.format("%10s %20s %20s", a.getId(), a.getMarca(), a.getModelo());
+            System.out.println();
+        }
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Pressione enter para continuar.");
+        scan.nextLine();
+    }
+
+    private void tabelaFuncionario() {
+        clean();
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.printf("%10s %20s %10s", "ID", "NOME", "USUARIO");
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------------------");
+
+        for (Funcionario f : sistema.getFuncionarios()) {
+            System.out.format("%10s %20s %10s", f.getId(), f.getNome(), f.getUsuario());
+            System.out.println();
+        }
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Pressione enter para continuar.");
+        scan.nextLine();
+    }
+
+    private void tabelaOs() {
+        clean();
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.printf("%10s %20s %20s", "ID", "STATUS", "FUNCIONARIO");
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------------------");
+
+        for (OrdemDeServico os : sistema.getOs()) {
+            System.out.format("%10s %20s %20s", os.getId(), os.getStatus(), os.getFuncionarioResponsavel().getNome());
+            System.out.println();
+        }
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Pressione enter para continuar.");
+        scan.nextLine();
     }
 
     private void clean() {
