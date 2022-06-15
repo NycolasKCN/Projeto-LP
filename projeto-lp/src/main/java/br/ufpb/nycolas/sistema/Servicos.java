@@ -7,6 +7,8 @@ import br.ufpb.nycolas.dados.LoadDataArq;
 
 public class Servicos {
 
+    // TODO documentar todas as funções
+
     private Data data = new LoadDataArq();
 
     /**
@@ -15,8 +17,17 @@ public class Servicos {
     public Servicos() {
     }
 
+    /**
+     * salva os dados em um arquivo .txt
+     */
     public void salvar() {
         data.salvarDados();
+    }
+
+    public static <E> E getLastElement(List<E> list) {
+        int lastIdx = list.size() - 1;
+        E lastElement = list.get(lastIdx);
+        return lastElement;
     }
 
     // ==================== Metodos Para Aparelhos =========================
@@ -43,7 +54,11 @@ public class Servicos {
      * @param novoAparelho
      */
     public Aparelho cadastrarNovoAparelho(String marca, String modelo, String descricao) {
-        Aparelho newAparelho = new Aparelho(marca, modelo, descricao);
+        Aparelho lastAp = getLastElement(data.getAparelhos());
+        int id = Integer.parseInt(lastAp.getId()) + 1;
+        String idString = String.valueOf(id);
+
+        Aparelho newAparelho = new Aparelho(idString, marca, modelo, descricao);
         data.cadastrarAparelho(newAparelho);
         return newAparelho;
     }
@@ -61,27 +76,6 @@ public class Servicos {
         return data.getAparelhos();
     }
 
-    // ==================== Metodos Para Ordens de serviço =========================
-
-    /**
-     * Registra uma nova ordem de serviço no banco de dados
-     * 
-     * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
-     */
-    public void cadastrarNovaOs(String status, String descricao, Aparelho ap, Funcionario fu) {
-        // TODO: Colocar trhows aqui e tratamento de erro
-        OrdemDeServico os = new OrdemDeServico(status, descricao, ap, fu);
-        data.cadastrarOs(os);
-    }
-
-    public void apagarOs(OrdemDeServico os) {
-        data.apagarOs(os);
-    }
-
-    public List<OrdemDeServico> getOs() {
-        return data.getOrdemDeServicos();
-    }
-
     // ==================== Metodos Para funcionarios =========================
 
     /**
@@ -91,7 +85,11 @@ public class Servicos {
      * @return Retorna o Funcionario que foi cadastrado
      */
     public Funcionario cadastrarNovoFuncionario(String nome, String user, String senha) {
-        Funcionario newFuncionario = new Funcionario(nome, user, senha);
+        Funcionario lastAp = getLastElement(data.getFuncionarios());
+        int id = Integer.parseInt(lastAp.getId()) + 1;
+        String idString = String.valueOf(id);
+
+        Funcionario newFuncionario = new Funcionario(idString, nome, user, senha);
         data.cadastrarFuncionario(newFuncionario);
         return newFuncionario;
     }
@@ -111,5 +109,30 @@ public class Servicos {
 
     public List<Funcionario> getFuncionarios() {
         return data.getFuncionarios();
+    }
+
+    // ==================== Metodos Para Ordens de serviço =========================
+
+    /**
+     * Registra uma nova ordem de serviço no banco de dados
+     * 
+     * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
+     */
+    public void cadastrarNovaOs(String status, String descricao, Aparelho ap, Funcionario fu) {
+        OrdemDeServico lastAp = getLastElement(data.getOrdemDeServicos());
+        int id = Integer.parseInt(lastAp.getId()) + 1;
+        String idString = String.valueOf(id);
+
+        // TODO: Colocar trhows aqui e tratamento de erro
+        OrdemDeServico os = new OrdemDeServico(idString, status, descricao, ap, fu);
+        data.cadastrarOs(os);
+    }
+
+    public void apagarOs(OrdemDeServico os) {
+        data.apagarOs(os);
+    }
+
+    public List<OrdemDeServico> getOs() {
+        return data.getOrdemDeServicos();
     }
 }

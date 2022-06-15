@@ -15,6 +15,7 @@ import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
 
 public class LoadDataArq implements Data {
+    // TODO documentar todas as funções
     private String caminhoAparelho = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
     private String caminhoFuncionario = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
     private String caminhoOs = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
@@ -23,9 +24,35 @@ public class LoadDataArq implements Data {
     private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
 
     public LoadDataArq() {
+        init();
         this.aparelhos = this.loadAparelhos();
         this.funcionarios = this.loadFuncionarios();
         this.ordemDeServicos = this.loadOrdemDeServicos();
+    }
+
+    private void init() {
+        try {
+            if (!arquivoExiste(caminhoAparelho)) {
+                FileWriter arq = new FileWriter(caminhoAparelho);
+                PrintWriter gravar = new PrintWriter(arq);
+                gravar.println("100;vazio;vazio;vazio;");
+                gravar.close();
+            }
+            if (!arquivoExiste(caminhoFuncionario)) {
+                FileWriter arq = new FileWriter(caminhoFuncionario);
+                PrintWriter gravar = new PrintWriter(arq);
+                gravar.println("200;vazio;vazio;vazio;");
+                gravar.close();
+            }
+            if (!arquivoExiste(caminhoOs)) {
+                FileWriter arq = new FileWriter(caminhoOs);
+                PrintWriter gravar = new PrintWriter(arq);
+                gravar.println("300;vazio;vazio;100;200;");
+                gravar.close();
+            }
+        } catch(IOException exception) {
+            System.out.println(exception);
+        }
     }
 
     /**
@@ -44,9 +71,9 @@ public class LoadDataArq implements Data {
                     String id = dados[0];
                     String marca = dados[1];
                     String modelo = dados[2];
-                    String descricao = dados[3];
+                    String proprietario = dados[3];
 
-                    Aparelho ap = new Aparelho(id, marca, modelo, descricao);
+                    Aparelho ap = new Aparelho(id, marca, modelo, proprietario);
 
                     this.aparelhos.add(ap);
                 }
@@ -179,8 +206,8 @@ public class LoadDataArq implements Data {
 
     @Override
     public boolean apagarAparelho(Aparelho aparelho) {
-        for (Aparelho a : this.aparelhos){
-            if (a.getId().equals(aparelho.getId())){
+        for (Aparelho a : this.aparelhos) {
+            if (a.getId().equals(aparelho.getId())) {
                 aparelhos.remove(a);
                 return true;
             }
@@ -190,8 +217,8 @@ public class LoadDataArq implements Data {
 
     @Override
     public boolean apagarFuncionario(Funcionario funcionario) {
-        for (Funcionario f : this.funcionarios){
-            if (f.getId().equals(funcionario.getId())){
+        for (Funcionario f : this.funcionarios) {
+            if (f.getId().equals(funcionario.getId())) {
                 funcionarios.remove(f);
                 return true;
             }
@@ -201,8 +228,8 @@ public class LoadDataArq implements Data {
 
     @Override
     public boolean apagarOs(OrdemDeServico ordemDeServico) {
-        for (OrdemDeServico o : this.ordemDeServicos){
-            if (o.getId().equals(ordemDeServico.getId())){
+        for (OrdemDeServico o : this.ordemDeServicos) {
+            if (o.getId().equals(ordemDeServico.getId())) {
                 ordemDeServicos.remove(o);
                 return true;
             }

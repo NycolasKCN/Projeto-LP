@@ -2,6 +2,8 @@ package br.ufpb.nycolas.sistema;
 
 public class OrdemDeServico {
 
+    // TODO documentar todas as funções
+
     private String id;
     private String status;
     private String descricaoProblema;

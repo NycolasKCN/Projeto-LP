@@ -9,13 +9,13 @@ public class TestAparelho {
         String id = "2";
         String marca = "Apple";
         String modelo = "Iphone 7";
-        String descrição = "chip da apple, fabricado na china";
+        String proprietario = "joselia";
 
-        Aparelho a = new Aparelho(id, marca, modelo, descrição);
+        Aparelho a = new Aparelho(id, marca, modelo, proprietario);
         assertEquals(id, a.getId());
         assertEquals(marca, a.getMarca());
         assertEquals(modelo, a.getModelo());
-        assertEquals(descrição, a.getDescricao());
+        assertEquals(proprietario, a.getProprietario());
     }
 
     @Test
@@ -24,7 +24,7 @@ public class TestAparelho {
         assertEquals("0", a.getId());
         assertEquals("vazio", a.getMarca());
         assertEquals("vazio", a.getModelo());
-        assertEquals("vazio", a.getDescricao());
+        assertEquals("vazio", a.getProprietario());
     }
 
     @Test
@@ -32,18 +32,18 @@ public class TestAparelho {
         String id = "1";
         String marca = "xiomi";
         String modelo = "note 10";
-        String descrição = "fabricado na china";
+        String proprietario = "junior";
 
-        Aparelho a = new Aparelho(id, marca, modelo, descrição);
+        Aparelho a = new Aparelho(id, marca, modelo, proprietario);
 
         a.setId("44");
         a.setMarca("xiaomi");
         a.setModelo("a10");
-        a.setDescricao("a10, vermelho, camera 10 mp");
+        a.setProprietario("Laura");
 
         assertEquals("44", a.getId());
         assertEquals("xiaomi", a.getMarca());
         assertEquals("a10", a.getModelo());
-        assertEquals("a10, vermelho, camera 10 mp", a.getDescricao());
+        assertEquals("Laura", a.getProprietario());
     }
 }

@@ -1,6 +1,7 @@
 package br.ufpb.nycolas.sistema;
 
 public class Funcionario {
+    // TODO documentar todas as funções
 
     private String id;
     private String nome;

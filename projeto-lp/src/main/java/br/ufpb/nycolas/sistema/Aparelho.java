@@ -1,10 +1,11 @@
 package br.ufpb.nycolas.sistema;
 
 public class Aparelho {
+    // TODO documentar todas as funções
     private String id;
     private String marca;
     private String modelo;
-    private String descricao;
+    private String proprietario;
 
     /**
      * Construtor com todos os paramentros
@@ -14,15 +15,16 @@ public class Aparelho {
      * @param modelo    Modelo do aparelho
      * @param descrição Breve descrição do aparelho
      */
-    public Aparelho(String id, String marca, String modelo, String descrição) {
+    public Aparelho(String id, String marca, String modelo, String proprietario) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
-        this.descricao = descrição;
+        this.proprietario = proprietario;
     }
 
     /**
      * Construtuor com apenas o id como parametro
+     * 
      * @param id id do Aparelho
      */
     public Aparelho(String id) {
@@ -40,40 +42,14 @@ public class Aparelho {
         this("0", "vazio", "vazio", "vazio");
     }
 
-    
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Aparelho other = (Aparelho) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
-
     /**
      * Representação do aparelho em String
+     * 
      * @return Retorna todos os atributos separados por ";"
      */
     @Override
     public String toString() {
-        return this.id + ";" + this.marca + ";" + this.modelo + ";" + this.descricao + ";";
+        return this.id + ";" + this.marca + ";" + this.modelo + ";" + this.proprietario + ";";
     }
 
     /**
@@ -118,17 +94,36 @@ public class Aparelho {
         this.modelo = novoModelo;
     }
 
-    /**
-     * @return Retorna a descrição do aparelho
-     */
-    public String getDescricao() {
-        return this.descricao;
+    public String getProprietario() {
+        return proprietario;
     }
 
-    /**
-     * @param novaDesc Nova descrição do aparelho
-     */
-    public void setDescricao(String novaDesc) {
-        this.descricao = novaDesc;
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((proprietario == null) ? 0 : proprietario.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Aparelho other = (Aparelho) obj;
+        if (proprietario == null) {
+            if (other.proprietario != null)
+                return false;
+        } else if (!proprietario.equals(other.proprietario))
+            return false;
+        return true;
     }
 }
