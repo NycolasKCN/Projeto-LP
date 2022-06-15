@@ -193,6 +193,8 @@ public class MenuTerminal implements Menu {
             System.out.println(e.getMessage());
         } catch (FuncionarioNaoExisteException e){
             System.out.println(e.getMessage());
+        } finally {
+            System.out.println("Ordem de serviço registrada!");
         }
         espere();
     }
@@ -200,12 +202,16 @@ public class MenuTerminal implements Menu {
     private void tabelaAparelho() {
         clean();
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.printf("%10s %20s %20s", "ID", "MARCA", "MODELO");
+        System.out.printf("%10s %20s %30s", "ID", "MARCA", "MODELO");
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------");
-
+        boolean primeiraRepetição = true;
         for (Aparelho a : sistema.getAparelhos()) {
-            System.out.format("%10s %20s %20s", a.getId(), a.getMarca(), a.getModelo());
+            if (primeiraRepetição) {
+                primeiraRepetição = false;
+                continue;
+            }
+            System.out.format("%10s %20s %30s", a.getId(), a.getMarca(), a.getModelo());
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
@@ -219,8 +225,12 @@ public class MenuTerminal implements Menu {
         System.out.printf("%10s %20s %10s", "ID", "NOME", "USUARIO");
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------");
-
+        boolean primeiraRepetição = true;
         for (Funcionario f : sistema.getFuncionarios()) {
+            if (primeiraRepetição) {
+                primeiraRepetição = false;
+                continue;
+            }
             System.out.format("%10s %20s %10s", f.getId(), f.getNome(), f.getUsuario());
             System.out.println();
         }
@@ -235,8 +245,12 @@ public class MenuTerminal implements Menu {
         System.out.printf("%10s %20s %20s", "ID", "STATUS", "FUNCIONARIO");
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------");
-
+        boolean primeiraRepetição = true;
         for (OrdemDeServico os : sistema.getOs()) {
+            if (primeiraRepetição) {
+                primeiraRepetição = false;
+                continue;
+            }
             System.out.format("%10s %20s %20s", os.getId(), os.getStatus(), os.getFuncionarioResponsavel().getNome());
             System.out.println();
         }

@@ -52,7 +52,7 @@ public class Servicos {
 
     public Aparelho consultarAparelhoPorProp(String nomeProp) throws AparelhoNaoExisteException {
         for (Aparelho i : data.getAparelhos()) {
-            if (i.getModelo().equalsIgnoreCase(nomeProp)) {
+            if (i.getProprietario().equalsIgnoreCase(nomeProp)) {
                 return i;
             }
         }
@@ -64,12 +64,12 @@ public class Servicos {
      * 
      * @param novoAparelho
      */
-    public Aparelho cadastrarNovoAparelho(String marca, String modelo, String descricao) {
+    public Aparelho cadastrarNovoAparelho(String marca, String modelo, String proprietario) {
         Aparelho lastAp = getLastElement(data.getAparelhos());
         int id = Integer.parseInt(lastAp.getId()) + 1;
         String idString = String.valueOf(id);
 
-        Aparelho newAparelho = new Aparelho(idString, marca, modelo, descricao);
+        Aparelho newAparelho = new Aparelho(idString, marca, modelo, proprietario);
         data.cadastrarAparelho(newAparelho);
         return newAparelho;
     }
@@ -111,7 +111,7 @@ public class Servicos {
 
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) throws FuncionarioNaoExisteException {
         for (Funcionario f : data.getFuncionarios()) {
-            if (f.getNome().equals(nomeFuncionario)) {
+            if (f.getNome().equalsIgnoreCase(nomeFuncionario)) {
                 return f;
             }
         }
@@ -131,6 +131,7 @@ public class Servicos {
      */
     public void cadastrarNovaOs(String status, String descricao, String cliente, String funcionario)
             throws AparelhoNaoExisteException, FuncionarioNaoExisteException {
+
         OrdemDeServico lastAp = getLastElement(data.getOrdemDeServicos());
         int id = Integer.parseInt(lastAp.getId()) + 1;
         String idString = String.valueOf(id);

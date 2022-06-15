@@ -65,7 +65,6 @@ public class LoadDataArq implements Data {
         if (arquivoExiste(caminhoAparelho)) {
             try {
                 Scanner scan = new Scanner(new FileReader(caminhoAparelho));
-
                 while (scan.hasNextLine()) {
                     String[] dados = scan.nextLine().split(";");
                     String id = dados[0];
@@ -102,7 +101,6 @@ public class LoadDataArq implements Data {
                     Funcionario f = new Funcionario(id, nome, user, senha);
 
                     this.funcionarios.add(f);
-
                 }
 
             } catch (FileNotFoundException e) {
@@ -165,14 +163,17 @@ public class LoadDataArq implements Data {
             FileWriter arqOs = new FileWriter(caminhoOs);
             PrintWriter gravarOs = new PrintWriter(arqOs);
 
+            gravarAparelhos.println("100;vazio;vazio;vazio;");
             for (Aparelho a : this.aparelhos) {
                 gravarAparelhos.println(a.toString());
             }
 
+            gravarFuncionarios.println("200;vazio;vazio;vazio;");
             for (Funcionario f : this.funcionarios) {
                 gravarFuncionarios.println(f.toString());
             }
 
+            gravarOs.println("300;vazio;vazio;100;200;");
             for (OrdemDeServico o : this.ordemDeServicos) {
                 gravarOs.println(o.toString());
             }
