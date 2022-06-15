@@ -91,13 +91,13 @@ public class MenuTerminal implements Menu {
         while (true) {
             clean();
             System.out.println("===== Consultas =====");
-            System.out.println("1. Consultar Aparelho");
-            System.out.println("2. Consultar Funcionario");
-            System.out.println("3. Consultar Ordem de serviço");
+            System.out.println("1. Listar todos Aparelho");
+            System.out.println("2. Listar todos Funcionario");
+            System.out.println("3. Listar todos Ordem de serviço");
             System.out.println("0. Voltar");
             System.out.print("Operação: ");
             String operacaoCad = scan.nextLine();
-
+            // TODO consultar pelo nome e etc
             if (operacaoCad.equals("0")) {
                 break;
             } else if (operacaoCad.equals("1")) {
@@ -127,11 +127,11 @@ public class MenuTerminal implements Menu {
             if (operacaoCad.equals("0")) {
                 break;
             } else if (operacaoCad.equals("1")) {
-                
+                apagaAparelho();
             } else if (operacaoCad.equals("2")) {
-
+                apagaFuncionario();
             } else if (operacaoCad.equals("3")) {
-
+                apagaOs();
             } else {
                 System.out.println("Operação invalida! tente novamente.");
                 espere();
@@ -235,6 +235,18 @@ public class MenuTerminal implements Menu {
         System.out.println("-----------------------------------------------------------------------------");
         System.out.println("Pressione enter para continuar.");
         scan.nextLine();
+    }
+
+    private void apagaAparelho() {
+        // TODO
+    }
+
+    private void apagaFuncionario() {
+        // TODO
+    }
+
+    private void apagaOs() {
+        // TODO
     }
 
     private void clean() {
