@@ -3,6 +3,8 @@ package br.ufpb.nycolas.ui;
 import java.io.IOException;
 import java.util.Scanner;
 
+import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
+import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
@@ -185,7 +187,13 @@ public class MenuTerminal implements Menu {
         System.out.print("Nome do Funcionario: ");
         funcionario = scan.nextLine();
 
-        sistema.cadastrarNovaOs(status, descricao, cliente, funcionario);
+        try {
+            sistema.cadastrarNovaOs(status, descricao, cliente, funcionario);
+        } catch (AparelhoNaoExisteException e) {
+            System.out.println(e.getMessage());
+        } catch (FuncionarioNaoExisteException e){
+            System.out.println(e.getMessage());
+        }
         espere();
     }
 

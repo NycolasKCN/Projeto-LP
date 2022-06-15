@@ -4,6 +4,8 @@ import java.util.List;
 
 import br.ufpb.nycolas.dados.Data;
 import br.ufpb.nycolas.dados.LoadDataArq;
+import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
+import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
 
 public class Servicos {
 
@@ -39,13 +41,22 @@ public class Servicos {
      * @param modeloDoAparelho modelo do aparelho a ser consulado
      * @return retona o aparelho caso exista, e null caso não exista
      */
-    public Aparelho consultarAparelhoPorModelo(String modeloDoAparelho) {
+    public Aparelho consultarAparelhoPorModelo(String modeloDoAparelho) throws AparelhoNaoExisteException {
         for (Aparelho i : data.getAparelhos()) {
-            if (i.getModelo().equals(modeloDoAparelho)) {
+            if (i.getModelo().equalsIgnoreCase(modeloDoAparelho)) {
                 return i;
             }
         }
-        return null;
+        throw new AparelhoNaoExisteException("Aparelho em questão não existe.");
+    }
+
+    public Aparelho consultarAparelhoPorProp(String nomeProp) throws AparelhoNaoExisteException {
+        for (Aparelho i : data.getAparelhos()) {
+            if (i.getModelo().equalsIgnoreCase(nomeProp)) {
+                return i;
+            }
+        }
+        throw new AparelhoNaoExisteException("Aparelho em questão não existe.");
     }
 
     /**
@@ -98,13 +109,13 @@ public class Servicos {
         data.apagarFuncionario(f);
     }
 
-    public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) {
+    public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) throws FuncionarioNaoExisteException {
         for (Funcionario f : data.getFuncionarios()) {
             if (f.getNome().equals(nomeFuncionario)) {
                 return f;
             }
         }
-        return null;
+        throw new FuncionarioNaoExisteException("Funcionario em questão não existe.");
     }
 
     public List<Funcionario> getFuncionarios() {
@@ -118,14 +129,16 @@ public class Servicos {
      * 
      * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
      */
-    public void cadastrarNovaOs(String status, String descricao, String cliente, String funcionario) {
+    public void cadastrarNovaOs(String status, String descricao, String cliente, String funcionario)
+            throws AparelhoNaoExisteException, FuncionarioNaoExisteException {
         OrdemDeServico lastAp = getLastElement(data.getOrdemDeServicos());
         int id = Integer.parseInt(lastAp.getId()) + 1;
         String idString = String.valueOf(id);
 
-        // TODO: Colocar trhows aqui e tratamento de erro
-        
-        OrdemDeServico os = new OrdemDeServico();
+        Aparelho ap = this.consultarAparelhoPorProp(cliente);
+        Funcionario f = this.consultarFuncionarioPeloNome(funcionario);
+
+        OrdemDeServico os = new OrdemDeServico(idString, status, descricao,ap, f);
         data.cadastrarOs(os);
     }
 
