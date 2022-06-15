@@ -69,6 +69,7 @@ public class Servicos {
      * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
      */
     public void cadastrarNovaOs(String status, String descricao, Aparelho ap, Funcionario fu) {
+        // TODO: Colocar trhows aqui e tratamento de erro
         OrdemDeServico os = new OrdemDeServico(status, descricao, ap, fu);
         data.cadastrarOs(os);
     }
