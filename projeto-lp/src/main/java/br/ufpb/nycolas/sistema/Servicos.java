@@ -57,7 +57,7 @@ public class Servicos {
      * 
      * @return Retorna uma ArrayList com todos os aparelhos
      */
-    public List<Aparelho> consultarTodosAparelhos() {
+    public List<Aparelho> getAparelhos() {
         return data.getAparelhos();
     }
 
@@ -69,6 +69,7 @@ public class Servicos {
      * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
      */
     public void cadastrarNovaOs(String status, String descricao, Aparelho ap, Funcionario fu) {
+        // TODO: Colocar trhows aqui e tratamento de erro
         OrdemDeServico os = new OrdemDeServico(status, descricao, ap, fu);
         data.cadastrarOs(os);
     }
@@ -77,7 +78,7 @@ public class Servicos {
         data.apagarOs(os);
     }
 
-    public List<OrdemDeServico> consultarTodasOs() {
+    public List<OrdemDeServico> getOs() {
         return data.getOrdemDeServicos();
     }
 
@@ -106,5 +107,9 @@ public class Servicos {
             }
         }
         return null;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return data.getFuncionarios();
     }
 }
