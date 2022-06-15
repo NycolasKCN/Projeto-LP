@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
+import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
@@ -184,6 +186,24 @@ public class LoadDataArq implements Data {
             System.out.println(e);
         }
         return false;
+    }
+
+    public void aparelhoExiste(String nomeProprietario) throws AparelhoNaoExisteException {
+        for (Aparelho a : aparelhos){
+            if (a.getProprietario().equalsIgnoreCase(nomeProprietario)){
+                return;
+            }
+        }
+        throw new AparelhoNaoExisteException("Aparelho em questão não existe.");
+    }
+
+    public void funcionarioExiste(String nomeFuncionario) throws FuncionarioNaoExisteException {
+        for (Funcionario f : funcionarios) {
+            if (f.getNome().equalsIgnoreCase(nomeFuncionario)){
+                return;
+            }
+        }
+        throw new FuncionarioNaoExisteException("Funcionario em questão não existe.");
     }
 
     @Override

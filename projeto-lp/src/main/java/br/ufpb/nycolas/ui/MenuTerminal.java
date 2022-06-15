@@ -141,16 +141,16 @@ public class MenuTerminal implements Menu {
 
     private void cadAparelho() {
         clean();
-        String marca, modelo, descricao;
+        String marca, modelo, proprietario;
         System.out.println("===== Cadastro de Aparelho =====");
         System.out.print("Marca do Aparelho: ");
         marca = scan.nextLine();
         System.out.print("Modelo do aparelho: ");
         modelo = scan.nextLine();
-        System.out.print("Descrição: ");
-        descricao = scan.nextLine();
+        System.out.print("Nome do proprietario: ");
+        proprietario = scan.nextLine();
 
-        sistema.cadastrarNovoAparelho(marca, modelo, descricao);
+        sistema.cadastrarNovoAparelho(marca, modelo, proprietario);
         System.out.println("Cadastro realizado com sucesso!");
         espere();
 
@@ -174,18 +174,18 @@ public class MenuTerminal implements Menu {
 
     private void cadOs() {
         clean();
-        String status, descricao; // ap, fu;
+        String status, descricao, cliente, funcionario;
         System.out.println("===== Cadasto de Ordem de serviço =====");
         System.out.print("Status: ");
         status = scan.nextLine();
         System.out.print("Descrição: ");
         descricao = scan.nextLine();
-        System.out.print("Aparelho: ");
-        // ap = scan.nextLine();
-        System.out.print("Funcionario: ");
-        // fu = scan.nextLine();
+        System.out.print("Nome do cliente: ");
+        cliente = scan.nextLine();
+        System.out.print("Nome do Funcionario: ");
+        funcionario = scan.nextLine();
 
-        sistema.cadastrarNovaOs(status, descricao, new Aparelho(), new Funcionario());
+        sistema.cadastrarNovaOs(status, descricao, cliente, funcionario);
         espere();
     }
 

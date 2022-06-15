@@ -118,13 +118,14 @@ public class Servicos {
      * 
      * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
      */
-    public void cadastrarNovaOs(String status, String descricao, Aparelho ap, Funcionario fu) {
+    public void cadastrarNovaOs(String status, String descricao, String cliente, String funcionario) {
         OrdemDeServico lastAp = getLastElement(data.getOrdemDeServicos());
         int id = Integer.parseInt(lastAp.getId()) + 1;
         String idString = String.valueOf(id);
 
         // TODO: Colocar trhows aqui e tratamento de erro
-        OrdemDeServico os = new OrdemDeServico(idString, status, descricao, ap, fu);
+        
+        OrdemDeServico os = new OrdemDeServico();
         data.cadastrarOs(os);
     }
 
