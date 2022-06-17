@@ -9,16 +9,19 @@ import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
 import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
 import br.ufpb.nycolas.exceptions.OsNaoExisteException;
 
+/**
+ * Sistema para gerenciar os dados
+ * 
+ * @author Nycolas Kevin
+ */
 public class Servicos {
-
-    // TODO documentar todas as funções
-
-    private Data data = new LoadDataArq();
+    private Data data;
 
     /**
-     * 
+     * Inicia o banco de dados
      */
     public Servicos() {
+        this.data = new LoadDataArq();
     }
 
     /**
@@ -28,6 +31,12 @@ public class Servicos {
         data.salvarDados();
     }
 
+    /**
+     * Verifica qual o ultimo elemento de uma lista e o retorna.
+     * 
+     * @param list
+     * @return Retorna o ultimo elemento da lista
+     */
     public static <E> E getLastElement(List<E> list) {
         int lastIdx = list.size() - 1;
         E lastElement = list.get(lastIdx);
@@ -52,6 +61,14 @@ public class Servicos {
         throw new AparelhoNaoExisteException("Aparelho em questão não existe.");
     }
 
+    /**
+     * Consulta nos dados os aparelhos que tem um proprietario igual ao que foi
+     * passado.
+     * 
+     * @param nomeProp O nome do proprietario do Aparelho
+     * @return Uma lista de aparelhos deste cliente
+     * @throws AparelhoNaoExisteException Caso o aparelho não exista nos dados
+     */
     public List<Aparelho> consultarAparelhosPorProp(String nomeProp) throws AparelhoNaoExisteException {
         List<Aparelho> querry = new ArrayList<>();
         for (Aparelho i : data.getAparelhos()) {
@@ -66,6 +83,14 @@ public class Servicos {
         }
     }
 
+    /**
+     * Consulta nos dados um Aparelho que tem o proprietario igual ao que foi
+     * passado
+     * 
+     * @param nomeProp nome do proprietario
+     * @return Retorna o primeiro aparelho que foi encontrado
+     * @throws AparelhoNaoExisteException Caso o aparelho não exista nos dados
+     */
     public Aparelho consultarAparelhoPorProp(String nomeProp) throws AparelhoNaoExisteException {
         for (Aparelho i : data.getAparelhos()) {
             if (i.getProprietario().contains(nomeProp)) {
@@ -78,7 +103,9 @@ public class Servicos {
     /**
      * Cadastra um novo aparelho no banco de dados
      * 
-     * @param novoAparelho
+     * @param marca        A marca do aparelho
+     * @param modelo       Modelo do aparelho
+     * @param proprietario Proprietario do aparelho e cliente
      */
     public Aparelho cadastrarNovoAparelho(String marca, String modelo, String proprietario) {
         Aparelho lastAp = getLastElement(data.getAparelhos());
@@ -90,6 +117,12 @@ public class Servicos {
         return newAparelho;
     }
 
+    /**
+     * Procura um aparelho com {@code Id} igual e o apaga.
+     * 
+     * @param id Id do aparelho para ser removido
+     * @throws AparelhoNaoExisteException Caso o aparelho não exista nos dados
+     */
     public void apagarAparelhoPorId(String id) throws AparelhoNaoExisteException {
         for (Aparelho a : data.getAparelhos()) {
             if (a.getId().equals(id)) {
@@ -112,10 +145,12 @@ public class Servicos {
     // ==================== Metodos Para funcionarios =========================
 
     /**
-     * Registra um novo funcionario no banco de dados
+     * Cadastra um novo Funcionario
      * 
-     * @param novoFuncionario um novo funcionario a ser cadastrado no banco de dados
-     * @return Retorna o Funcionario que foi cadastrado
+     * @param nome  nome do funcionario
+     * @param user  usuario
+     * @param senha senha
+     * @return retorna o funcionario cadastrado
      */
     public Funcionario cadastrarNovoFuncionario(String nome, String user, String senha) {
         Funcionario lastAp = getLastElement(data.getFuncionarios());
@@ -127,16 +162,14 @@ public class Servicos {
         return newFuncionario;
     }
 
-    public void apagarFuncionarioPorId(String id) throws FuncionarioNaoExisteException {
-        for (Funcionario f : data.getFuncionarios()) {
-            if (f.getId().equals(id)) {
-                data.apagarFuncionario(f);
-                return;
-            }
-        }
-        throw new FuncionarioNaoExisteException("Funcionário não pode ser apagado, pois não existe.");
-    }
-
+    /**
+     * Procura um funcionario pelo id
+     * 
+     * @param id Id para fazer a busca
+     * @return Retorna o primeiro funcionario que for encontrado
+     * @throws FuncionarioNaoExisteException caso o funcionario não exista ou não
+     *                                       foi encontrado
+     */
     public Funcionario consultarFuncionarioPorId(String id) throws FuncionarioNaoExisteException {
         for (Funcionario f : data.getFuncionarios()) {
             if (f.getId().equals(id)) {
@@ -146,6 +179,14 @@ public class Servicos {
         throw new FuncionarioNaoExisteException("Funcionario não existe ou não foi encontrado.");
     }
 
+    /**
+     * Consulta funcionarios pelo nome
+     * 
+     * @param nomeFuncionario nome do funcionario a ser encontrado
+     * @return A lista de funcionarios que contenha o {@code nomeFuncionario}
+     * @throws FuncionarioNaoExisteExceptioncaso o funcionario não exista ou não
+     *                                           foi encontrado
+     */
     public List<Funcionario> consultarFuncionariosPeloNome(String nomeFuncionario)
             throws FuncionarioNaoExisteException {
         List<Funcionario> querry = new ArrayList<>();
@@ -162,6 +203,14 @@ public class Servicos {
         }
     }
 
+    /**
+     * Procura um funcionario pelo nome
+     * 
+     * @param nomeFuncionario Id para fazer a busca
+     * @return Retorna o primeiro funcionario que for encontrado
+     * @throws FuncionarioNaoExisteException caso o funcionario não exista ou não
+     *                                       foi encontrado
+     */
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) throws FuncionarioNaoExisteException {
         for (Funcionario f : data.getFuncionarios()) {
             if (f.getNome().equalsIgnoreCase(nomeFuncionario)) {
@@ -171,6 +220,27 @@ public class Servicos {
         throw new FuncionarioNaoExisteException("Funcionario em questão não existe.");
     }
 
+    /**
+     * Apaga o funcionario pelo id
+     * 
+     * @param id id do funcionario que será removido
+     * @throws FuncionarioNaoExisteException caso o funcionario não exista
+     */
+    public void apagarFuncionarioPorId(String id) throws FuncionarioNaoExisteException {
+        for (Funcionario f : data.getFuncionarios()) {
+            if (f.getId().equals(id)) {
+                data.apagarFuncionario(f);
+                return;
+            }
+        }
+        throw new FuncionarioNaoExisteException("Funcionário não pode ser apagado, pois não existe.");
+    }
+
+    /**
+     * Retorna uma ArrayList com todos os Funcionarios
+     * 
+     * @return retorna a lista de funcionarios
+     */
     public List<Funcionario> getFuncionarios() {
         return data.getFuncionarios();
     }
@@ -178,9 +248,15 @@ public class Servicos {
     // ==================== Metodos Para Ordens de serviço =========================
 
     /**
-     * Registra uma nova ordem de serviço no banco de dados
+     * Registra uma nova ordem de serviço no banco de dados, e atribui seu
+     * respectivo aparelho e funcionario
      * 
-     * @param novaOs uma nova ordem de serviço a ser cadatrada no banco de dados
+     * @param status      Progesso do aparelho
+     * @param descricao   Descrição do problema
+     * @param cliente     Nome do cliente e proprietario do aparelho
+     * @param funcionario Nome do funcionario responsavel
+     * @throws AparelhoNaoExisteException    Caso o aparelho não seja encontrado
+     * @throws FuncionarioNaoExisteException Caso o funcionario não seja encontrado
      */
     public void cadastrarNovaOs(String status, String descricao, String cliente, String funcionario)
             throws AparelhoNaoExisteException, FuncionarioNaoExisteException {
@@ -196,6 +272,14 @@ public class Servicos {
         data.cadastrarOs(os);
     }
 
+    /**
+     * Consulta e retorna as ordens de serviço de um determinado Funcionario
+     * 
+     * @param nomeFuncionario Funcionario responsavel pela os
+     * @return Uma arrayList com todas os desse funcionario
+     * @throws OsNaoExisteException caso a ordem de serviço não exista ou não seja
+     *                              encontrada
+     */
     public List<OrdemDeServico> consultarOSdeFuncionario(String nomeFuncionario) throws OsNaoExisteException {
         List<OrdemDeServico> querry = new ArrayList<>();
         for (OrdemDeServico os : data.getOrdemDeServicos()) {
@@ -211,6 +295,13 @@ public class Servicos {
         }
     }
 
+    /**
+     * Consulta e retorna Ordem de serviço que tem o Id
+     * 
+     * @param id Id para consulta
+     * @return Retorna a ordem de serviço encontrada
+     * @throws OsNaoExisteException Caso a ordem de serviço não exista
+     */
     public OrdemDeServico consultarOSdeId(String id) throws OsNaoExisteException {
         for (OrdemDeServico os : data.getOrdemDeServicos()) {
             if (os.getId().equals(id)) {
@@ -220,6 +311,12 @@ public class Servicos {
         throw new OsNaoExisteException("Ordem de serviço não existe.");
     }
 
+    /**
+     * Procura e apaga a os de id: {@code id}
+     * 
+     * @param id Id da ordem de serviço que deseja apagar
+     * @throws OsNaoExisteException Caso a ordem de serviço não exista
+     */
     public void apagarOsPorId(String id) throws OsNaoExisteException {
         for (OrdemDeServico os : data.getOrdemDeServicos()) {
             if (os.getId().equals(id)) {
@@ -230,6 +327,11 @@ public class Servicos {
         throw new OsNaoExisteException("Ordem de serviço não pode ser apagada, pois não existe.");
     }
 
+    /**
+     * Retorna uma lista com todas ordens de serviço
+     * 
+     * @return Uma arrayList com ordens de serviço
+     */
     public List<OrdemDeServico> getOs() {
         return data.getOrdemDeServicos();
     }
