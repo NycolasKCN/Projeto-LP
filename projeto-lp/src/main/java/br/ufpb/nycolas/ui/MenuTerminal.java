@@ -67,9 +67,9 @@ public class MenuTerminal implements Menu {
             }
         } // fim do loop: menu principal
 
-        System.out.println("Fim do programa!");
         // Salvando os dados
         sistema.salvar();
+        System.out.println("Dados salvos");
         scan.close();
     }
 
