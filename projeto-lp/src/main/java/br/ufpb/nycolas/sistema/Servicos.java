@@ -72,7 +72,7 @@ public class Servicos {
     public List<Aparelho> consultarAparelhosPorProp(String nomeProp) throws AparelhoNaoExisteException {
         List<Aparelho> querry = new ArrayList<>();
         for (Aparelho i : data.getAparelhos()) {
-            if (i.getProprietario().contains(nomeProp.toLowerCase())) {
+            if (i.getProprietario().toLowerCase().contains(nomeProp.toLowerCase())) {
                 querry.add(i);
             }
         }
@@ -93,7 +93,7 @@ public class Servicos {
      */
     public Aparelho consultarAparelhoPorProp(String nomeProp) throws AparelhoNaoExisteException {
         for (Aparelho i : data.getAparelhos()) {
-            if (i.getProprietario().contains(nomeProp)) {
+            if (i.getProprietario().toLowerCase().contains(nomeProp.toLowerCase())) {
                 return i;
             }
         }
