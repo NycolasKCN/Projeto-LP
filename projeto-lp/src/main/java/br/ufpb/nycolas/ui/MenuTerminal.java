@@ -124,7 +124,7 @@ public class MenuTerminal implements Menu {
             } else if (operacaoCad.equals("5")) {
                 buscarFuncionarioNome();
             } else if (operacaoCad.equals("6")) {
-                // TODO Buscar os por funcionario
+                buscarOsPorFuncionario();
             } else {
                 System.out.println("Operação invalida! tente novamente.");
                 espere();
@@ -398,7 +398,7 @@ public class MenuTerminal implements Menu {
                 System.out.println();
             }
             System.out.println("-----------------------------------------------------------------------------");
-            vizualizarInformacoesFuncionario();
+            visualizarInformacoesFuncionario();
         } catch (FuncionarioNaoExisteException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
@@ -409,8 +409,35 @@ public class MenuTerminal implements Menu {
         scan.nextLine();
     }
 
+    private void buscarOsPorFuncionario() {
+        clean();
+        System.out.println("===== Buscar Ordem de serviço =====");
+        System.out.print("Digite o nome do Funcionario responsavel: ");
+        String nomeFuncionario = scan.nextLine();
+
+        try {
+            List<OrdemDeServico> querry = sistema.consultarOSdeFuncionario(nomeFuncionario);
+            System.out.println("Resultado:");
+            System.out.println("-----------------------------------------------------------------------------");
+            System.out.printf("%10s %20s %20s", "ID", "STATUS", "FUNCIONARIO");
+            System.out.println();
+            System.out.println("-----------------------------------------------------------------------------");
+            for (OrdemDeServico os : querry) {
+                System.out.format("%10s %20s %20s", os.getId(), os.getStatus(),
+                        os.getFuncionarioResponsavel().getNome());
+                System.out.println();
+            }
+            System.out.println("-----------------------------------------------------------------------------");
+            visualizarInformacoesOs();
+        } catch (OsNaoExisteException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.print("Enter para continuar.");
+        scan.nextLine();
+    }
+
     private void visualizarInformacoesAparelho() throws AparelhoNaoExisteException {
-        System.out.println("Para vizualizar mais informações de um Aparelho, digite o id.");
+        System.out.println("Para visualizar mais informações de um Aparelho, digite o id.");
         System.out.println("Digite '0' para voltar.");
         System.out.print("Id: ");
         String idQuerry = scan.nextLine();
@@ -428,8 +455,8 @@ public class MenuTerminal implements Menu {
         System.out.println("-----------------------------------------------------------------------------");
     }
 
-    private void vizualizarInformacoesFuncionario() throws FuncionarioNaoExisteException{
-        System.out.println("Para vizualizar mais informações de um Funcionario, digite o id.");
+    private void visualizarInformacoesFuncionario() throws FuncionarioNaoExisteException {
+        System.out.println("Para visualizar mais informações de um Funcionario, digite o id.");
         System.out.println("Digite '0' para voltar.");
         System.out.print("Id: ");
         String idQuerry = scan.nextLine();
@@ -442,6 +469,26 @@ public class MenuTerminal implements Menu {
         System.out.println("Nome: " + consultedFuncionario.getNome());
         System.out.println("Usuário: " + consultedFuncionario.getUsuario());
         System.out.println("Senha: " + consultedFuncionario.getSenha());
+        System.out.println("-----------------------------------------------------------------------------");
+
+    }
+
+    private void visualizarInformacoesOs() throws OsNaoExisteException{
+        System.out.println("Para visualizar mais informações de uma Ordem de serviço, digite o id.");
+        System.out.println("Digite '0' para voltar.");
+        System.out.print("Id: ");
+        String idQuerry = scan.nextLine();
+
+        if (idQuerry.equals("0")) {
+            return;
+        }
+        OrdemDeServico consultedOs = sistema.consultarOSdeId(idQuerry);
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Status: " + consultedOs.getStatus());
+        System.out.println("Descrição: " + consultedOs.getDescricaoProblema());
+        System.out.println("Nome do funcionário responsavel: " + consultedOs.getFuncionarioResponsavel().getNome());
+        System.out.println("Nome do Cliente: " + consultedOs.getAparelhoVinculado().getProprietario());
+        System.out.println("Modelo do aparelho: " + consultedOs.getAparelhoVinculado().getModelo());
         System.out.println("-----------------------------------------------------------------------------");
 
     }

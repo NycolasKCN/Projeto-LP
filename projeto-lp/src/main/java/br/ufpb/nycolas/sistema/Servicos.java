@@ -196,6 +196,30 @@ public class Servicos {
         data.cadastrarOs(os);
     }
 
+    public List<OrdemDeServico> consultarOSdeFuncionario(String nomeFuncionario) throws OsNaoExisteException {
+        List<OrdemDeServico> querry = new ArrayList<>();
+        for (OrdemDeServico os : data.getOrdemDeServicos()) {
+            if (os.getFuncionarioResponsavel().getNome().toLowerCase().contains(nomeFuncionario.toLowerCase())) {
+                querry.add(os);
+            }
+        }
+
+        if (!querry.isEmpty()) {
+            return querry;
+        } else {
+            throw new OsNaoExisteException("Ordem de serviço com esse funcionário não existe.");
+        }
+    }
+
+    public OrdemDeServico consultarOSdeId(String id) throws OsNaoExisteException {
+        for (OrdemDeServico os : data.getOrdemDeServicos()) {
+            if (os.getId().equals(id)) {
+                return os;
+            }
+        }
+        throw new OsNaoExisteException("Ordem de serviço não existe.");
+    }
+
     public void apagarOsPorId(String id) throws OsNaoExisteException {
         for (OrdemDeServico os : data.getOrdemDeServicos()) {
             if (os.getId().equals(id)) {
