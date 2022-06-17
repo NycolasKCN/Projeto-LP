@@ -329,6 +329,7 @@ public class MenuTerminal implements Menu {
             try {
                 sistema.apagarAparelhoPorId(idAparelho);
                 System.out.println("Aparelho apagado com sucesso!");
+                continuar = false;
             } catch (AparelhoNaoExisteException e) {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
@@ -361,6 +362,7 @@ public class MenuTerminal implements Menu {
             try {
                 sistema.apagarFuncionarioPorId(idFuncionario);
                 System.out.println("Funcionário apagado com sucesso!");
+                continuar = false;
             } catch (FuncionarioNaoExisteException e) {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
