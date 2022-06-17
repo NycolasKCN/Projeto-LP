@@ -6,6 +6,7 @@ import br.ufpb.nycolas.dados.Data;
 import br.ufpb.nycolas.dados.LoadDataArq;
 import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
 import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
+import br.ufpb.nycolas.exceptions.OsNaoExisteException;
 
 public class Servicos {
 
@@ -111,8 +112,14 @@ public class Servicos {
         return newFuncionario;
     }
 
-    public void apagarFuncionario(Funcionario f) {
-        data.apagarFuncionario(f);
+    public void apagarFuncionarioPorId(String id) throws FuncionarioNaoExisteException {
+        for (Funcionario f : data.getFuncionarios()) {
+            if (f.getId().equals(id)) {
+                data.apagarFuncionario(f);
+                return;
+            }
+        }
+        throw new FuncionarioNaoExisteException("Funcionário não pode ser apagado, pois não existe.");
     }
 
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) throws FuncionarioNaoExisteException {
@@ -145,12 +152,18 @@ public class Servicos {
         Aparelho ap = this.consultarAparelhoPorProp(cliente);
         Funcionario f = this.consultarFuncionarioPeloNome(funcionario);
 
-        OrdemDeServico os = new OrdemDeServico(idString, status, descricao,ap, f);
+        OrdemDeServico os = new OrdemDeServico(idString, status, descricao, ap, f);
         data.cadastrarOs(os);
     }
 
-    public void apagarOs(OrdemDeServico os) {
-        data.apagarOs(os);
+    public void apagarOsPorId(String id) throws OsNaoExisteException {
+        for (OrdemDeServico os : data.getOrdemDeServicos()) {
+            if (os.getId().equals(id)) {
+                data.apagarOs(os);
+                return;
+            }
+        }
+        throw new OsNaoExisteException("Ordem de serviço não pode ser apagada, pois não existe.");
     }
 
     public List<OrdemDeServico> getOs() {
