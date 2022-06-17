@@ -368,7 +368,7 @@ public class MenuTerminal implements Menu {
                 System.out.println();
             }
             System.out.println("-----------------------------------------------------------------------------");
-            visualizarInformacaoAparelho();
+            visualizarInformacoesAparelho();
 
         } catch (AparelhoNaoExisteException e) {
             System.out.println(e.getMessage());
@@ -383,22 +383,67 @@ public class MenuTerminal implements Menu {
     private void buscarFuncionarioNome() {
         clean();
         System.out.println("===== Buscar Funcionário =====");
-        System.out.println("Digite o nome do funcionário: ");
-        // String nomeFuncionario = scan.nextLine();
+        System.out.print("Digite o nome do funcionário: ");
+        String nomeFuncionario = scan.nextLine();
 
+        try {
+            List<Funcionario> querry = sistema.consultarFuncionariosPeloNome(nomeFuncionario);
+            System.out.println("Resultado:");
+            System.out.println("-----------------------------------------------------------------------------");
+            System.out.printf("%10s %20s %10s", "ID", "NOME", "USUARIO");
+            System.out.println();
+            System.out.println("-----------------------------------------------------------------------------");
+            for (Funcionario f : querry) {
+                System.out.format("%10s %20s %10s", f.getId(), f.getNome(), f.getUsuario());
+                System.out.println();
+            }
+            System.out.println("-----------------------------------------------------------------------------");
+            vizualizarInformacoesFuncionario();
+        } catch (FuncionarioNaoExisteException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
+            System.out.println(e);
+        }
+        System.out.print("Enter para continuar.");
+        scan.nextLine();
     }
 
-    private void visualizarInformacaoAparelho() throws AparelhoNaoExisteException{
+    private void visualizarInformacoesAparelho() throws AparelhoNaoExisteException {
         System.out.println("Para vizualizar mais informações de um Aparelho, digite o id.");
+        System.out.println("Digite '0' para voltar.");
         System.out.print("Id: ");
         String idQuerry = scan.nextLine();
-        Aparelho aparelhoQuerry = sistema.consultarAparelhoPorId(idQuerry);
+
+        if (idQuerry.equals("0")) {
+            return;
+        }
+        Aparelho consultedAparelho = sistema.consultarAparelhoPorId(idQuerry);
 
         System.out.println("Resultado: ");
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.println("Marca: " + aparelhoQuerry.getMarca());
-        System.out.println("Modelo: " + aparelhoQuerry.getModelo());
-        System.out.println("Proprietário: " + aparelhoQuerry.getProprietario());
+        System.out.println("Marca: " + consultedAparelho.getMarca());
+        System.out.println("Modelo: " + consultedAparelho.getModelo());
+        System.out.println("Proprietário: " + consultedAparelho.getProprietario());
+        System.out.println("-----------------------------------------------------------------------------");
+    }
+
+    private void vizualizarInformacoesFuncionario() throws FuncionarioNaoExisteException{
+        System.out.println("Para vizualizar mais informações de um Funcionario, digite o id.");
+        System.out.println("Digite '0' para voltar.");
+        System.out.print("Id: ");
+        String idQuerry = scan.nextLine();
+
+        if (idQuerry.equals("0")) {
+            return;
+        }
+        Funcionario consultedFuncionario = sistema.consultarFuncionarioPorId(idQuerry);
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Nome: " + consultedFuncionario.getNome());
+        System.out.println("Usuário: " + consultedFuncionario.getUsuario());
+        System.out.println("Senha: " + consultedFuncionario.getSenha());
+        System.out.println("-----------------------------------------------------------------------------");
+
     }
 
     private static void clean() {

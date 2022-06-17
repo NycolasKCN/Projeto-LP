@@ -66,7 +66,7 @@ public class Servicos {
         }
     }
 
-    public Aparelho consultarAparelhoPorProp(String nomeProp)  throws AparelhoNaoExisteException{
+    public Aparelho consultarAparelhoPorProp(String nomeProp) throws AparelhoNaoExisteException {
         for (Aparelho i : data.getAparelhos()) {
             if (i.getProprietario().contains(nomeProp)) {
                 return i;
@@ -135,6 +135,31 @@ public class Servicos {
             }
         }
         throw new FuncionarioNaoExisteException("Funcionário não pode ser apagado, pois não existe.");
+    }
+
+    public Funcionario consultarFuncionarioPorId(String id) throws FuncionarioNaoExisteException {
+        for (Funcionario f : data.getFuncionarios()) {
+            if (f.getId().equals(id)) {
+                return f;
+            }
+        }
+        throw new FuncionarioNaoExisteException("Funcionario não existe ou não foi encontrado.");
+    }
+
+    public List<Funcionario> consultarFuncionariosPeloNome(String nomeFuncionario)
+            throws FuncionarioNaoExisteException {
+        List<Funcionario> querry = new ArrayList<>();
+        for (Funcionario f : data.getFuncionarios()) {
+            if (f.getNome().toLowerCase().contains(nomeFuncionario.toLowerCase())) {
+                querry.add(f);
+            }
+        }
+
+        if (!querry.isEmpty()) {
+            return querry;
+        } else {
+            throw new FuncionarioNaoExisteException("Funcionario em questão não existe.");
+        }
     }
 
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) throws FuncionarioNaoExisteException {
