@@ -97,10 +97,13 @@ public class MenuTerminal implements Menu {
             System.out.println("1. Listar todos Aparelho");
             System.out.println("2. Listar todos Funcionario");
             System.out.println("3. Listar todos Ordem de serviço");
+            System.out.println("4. Buscar Aparelhos por proprietario");
+            System.out.println("5. Buscar Funcionarios pelo nome");
+            System.out.println("6. Buscar OS por funcionario responsavel");
             System.out.println("0. Voltar");
             System.out.print("Operação: ");
             String operacaoCad = scan.nextLine();
-            // TODO consultar pelo nome e etc
+            
             if (operacaoCad.equals("0")) {
                 break;
             } else if (operacaoCad.equals("1")) {
@@ -115,6 +118,12 @@ public class MenuTerminal implements Menu {
                 tabelaOs();
                 System.out.print("Pressione enter para continuar.");
                 scan.nextLine();
+            } else if (operacaoCad.equals("4")) {
+                // TODO buscar aparelho por proprietario
+            } else if (operacaoCad.equals("5")) {
+                // TODO Buscar Funcionarios pelo nome
+            } else if (operacaoCad.equals("6")) {
+                // TODO Buscar os por funcionario
             } else {
                 System.out.println("Operação invalida! tente novamente.");
                 espere();
