@@ -12,6 +12,10 @@ import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
 import br.ufpb.nycolas.sistema.Servicos;
 
+/**
+ * User Interface.
+ * @author Nycolas Kevin
+ */
 public class MenuTerminal implements Menu {
 
     private Scanner scan = new Scanner(System.in);
@@ -21,6 +25,10 @@ public class MenuTerminal implements Menu {
         this.init();
     }
 
+    /**
+     * Metodo que inicia o sistema e o terminal do programa.
+     * Possue o laço principal do programa
+     */
     public void init() {
 
         boolean continuar = true;
@@ -64,6 +72,9 @@ public class MenuTerminal implements Menu {
         scan.close();
     }
 
+    /**
+     * Loop para o menu de cadastros.
+     */
     private void loopCadastros() {
         while (true) {
             clean();
@@ -91,6 +102,9 @@ public class MenuTerminal implements Menu {
         } // fim do loop: menu de cadastros
     }
 
+    /**
+     * Loop para o menu de consultas.
+     */
     private void loopConsultas() {
         while (true) {
             clean();
@@ -132,6 +146,9 @@ public class MenuTerminal implements Menu {
         } // fim do loop: menu consultas
     }
 
+    /**
+     * Loop para o menu de apagar.
+     */
     private void loopApagar() {
         while (true) {
             clean();
@@ -158,6 +175,9 @@ public class MenuTerminal implements Menu {
         } // fim do loop: menu apagar
     }
 
+    /**
+     * Recebe os dados do usuario e cadastra um novo {@code Aparelho}.
+     */
     private void cadAparelho() {
         clean();
         String marca, modelo, proprietario;
@@ -175,6 +195,9 @@ public class MenuTerminal implements Menu {
 
     }
 
+    /**
+     * Recebe os dados do usuario e cadastra um novo {@code Funcionario}.
+     */
     private void cadFuncionario() {
         clean();
         String nome, user, senha;
@@ -191,6 +214,9 @@ public class MenuTerminal implements Menu {
         espere();
     }
 
+    /**
+     * Recebe os dados do usuario e cadastra uma nova {@code OrdemDeServico}.
+     */
     private void cadOs() {
         clean();
         String status, descricao, cliente, funcionario;
@@ -218,6 +244,10 @@ public class MenuTerminal implements Menu {
         espere();
     }
 
+    /**
+     * Imprime um tabela com todos os aparelhos.
+     * 
+     */
     private void tabelaAparelho() {
         clean();
         System.out.println("-----------------------------------------------------------------------------");
@@ -236,6 +266,9 @@ public class MenuTerminal implements Menu {
         System.out.println("-----------------------------------------------------------------------------");
     }
 
+    /**
+     * Imprime uma tabela com todos os funcionarios.
+     */
     private void tabelaFuncionario() {
         clean();
         System.out.println("-----------------------------------------------------------------------------");
@@ -254,6 +287,9 @@ public class MenuTerminal implements Menu {
         System.out.println("-----------------------------------------------------------------------------");
     }
 
+    /**
+     * Imprime uma tabela com todas as ordens de serviço.
+     */
     private void tabelaOs() {
         clean();
         System.out.println("-----------------------------------------------------------------------------");
@@ -272,13 +308,23 @@ public class MenuTerminal implements Menu {
         System.out.println("-----------------------------------------------------------------------------");
     }
 
+    /**
+     * Recebe os dados do usuario e apaga o {@code Aparelho}, se ele existir.
+     */
     private void apagaAparelho() {
         boolean continuar = true;
         while (continuar) {
             System.out.println("===== Apagar aparelho =====");
             tabelaAparelho();
-            System.out.print("Digite o id para o aparelho que deseja apagar: ");
+            System.out.println("Digite o id para apagar o Aparelho que deseja.");
+            System.out.println("Digite '0' para voltar e não apagar nada.");
+            System.out.print("ID: ");
             String idAparelho = scan.nextLine();
+
+            if (idAparelho.equals("0")) {
+                continuar = false;
+                continue;
+            }
 
             try {
                 sistema.apagarAparelhoPorId(idAparelho);
@@ -294,13 +340,18 @@ public class MenuTerminal implements Menu {
         }
     }
 
+    /**
+     * Recebe os dados do usuario e apaga o {@code Funcionario}, se ele existir.
+     */
     private void apagaFuncionario() {
 
         boolean continuar = true;
         while (continuar) {
             System.out.println(("===== Apagar funcionário ====="));
             tabelaFuncionario();
-            System.out.print("Digite o id para apagar o funcionário que deseja: (0 para não apagar nada) ");
+            System.out.println("Digite o id para apagar o funcionário que deseja.");
+            System.out.println("Digite '0' para voltar e não apagar nada.");
+            System.out.print("ID: ");
             String idFuncionario = scan.nextLine();
 
             if (idFuncionario.equals("0")) {
@@ -320,13 +371,18 @@ public class MenuTerminal implements Menu {
             espere();
         }
     }
-
+    
+    /**
+     * Recebe os dados do usuario e apaga a {@code OrdemDeServico}, se ela existir.
+     */
     private void apagaOs() {
         boolean continuar = true;
         while (continuar) {
             System.out.println("===== Apagar OS =====");
             tabelaOs();
-            System.out.print("Digite o id para apagar a OS que deseja: (0 para não apaga nada)");
+            System.out.println("Digite o id para apagar a Ordem de serviço que deseja.");
+            System.out.println("Digite '0' para voltar e não apagar nada.");
+            System.out.print("ID: ");
             String idOs = scan.nextLine();
 
             if (idOs.equals("0")) {
@@ -349,6 +405,9 @@ public class MenuTerminal implements Menu {
         }
     }
 
+    /**
+     * Recebe os dados do usuario e imprime os {@code Aparelhos} encontrados.
+     */
     private void buscarAparelhoNome() {
         clean();
         System.out.println("===== Buscar Aparelho =====");
@@ -380,6 +439,9 @@ public class MenuTerminal implements Menu {
         scan.nextLine();
     }
 
+    /**
+     * Recebe os dados do usuario e imprime os {@code Funcionarios} encontrados.
+     */
     private void buscarFuncionarioNome() {
         clean();
         System.out.println("===== Buscar Funcionário =====");
@@ -409,6 +471,9 @@ public class MenuTerminal implements Menu {
         scan.nextLine();
     }
 
+    /**
+     * Recebe os dados do usuario e imprime as {@code OrdensDeServico} encontradas.
+     */
     private void buscarOsPorFuncionario() {
         clean();
         System.out.println("===== Buscar Ordem de serviço =====");
@@ -436,6 +501,10 @@ public class MenuTerminal implements Menu {
         scan.nextLine();
     }
 
+    /**
+     * Imprime as informações de um aparelho.
+     * @throws AparelhoNaoExisteException Caso o aparelho não exista.
+     */
     private void visualizarInformacoesAparelho() throws AparelhoNaoExisteException {
         System.out.println("Para visualizar mais informações de um Aparelho, digite o id.");
         System.out.println("Digite '0' para voltar.");
@@ -455,6 +524,10 @@ public class MenuTerminal implements Menu {
         System.out.println("-----------------------------------------------------------------------------");
     }
 
+    /**
+     * Imprime as informações de um Funcionario.
+     * @throws FuncionarioNaoExisteException Caso o funcionário não exista.
+     */
     private void visualizarInformacoesFuncionario() throws FuncionarioNaoExisteException {
         System.out.println("Para visualizar mais informações de um Funcionario, digite o id.");
         System.out.println("Digite '0' para voltar.");
@@ -473,7 +546,11 @@ public class MenuTerminal implements Menu {
 
     }
 
-    private void visualizarInformacoesOs() throws OsNaoExisteException{
+    /**
+     * Imprime as informações de uma Ordem de serviço.
+     * @throws OsNaoExisteException Caso a OrdemDeServico não exista.
+     */
+    private void visualizarInformacoesOs() throws OsNaoExisteException {
         System.out.println("Para visualizar mais informações de uma Ordem de serviço, digite o id.");
         System.out.println("Digite '0' para voltar.");
         System.out.print("Id: ");
@@ -493,6 +570,9 @@ public class MenuTerminal implements Menu {
 
     }
 
+    /**
+     * Limpa o terminal.
+     */
     private static void clean() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
@@ -504,6 +584,9 @@ public class MenuTerminal implements Menu {
 
     }
 
+    /**
+     * Pausa o precesso por um estante.
+     */
     private static void espere() {
         try {
             Thread.sleep(800);
