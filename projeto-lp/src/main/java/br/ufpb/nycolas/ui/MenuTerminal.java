@@ -14,6 +14,7 @@ import br.ufpb.nycolas.sistema.Servicos;
 
 /**
  * User Interface.
+ * 
  * @author Nycolas Kevin
  */
 public class MenuTerminal implements Menu {
@@ -371,7 +372,7 @@ public class MenuTerminal implements Menu {
             espere();
         }
     }
-    
+
     /**
      * Recebe os dados do usuario e apaga a {@code OrdemDeServico}, se ela existir.
      */
@@ -503,6 +504,7 @@ public class MenuTerminal implements Menu {
 
     /**
      * Imprime as informações de um aparelho.
+     * 
      * @throws AparelhoNaoExisteException Caso o aparelho não exista.
      */
     private void visualizarInformacoesAparelho() throws AparelhoNaoExisteException {
@@ -526,6 +528,7 @@ public class MenuTerminal implements Menu {
 
     /**
      * Imprime as informações de um Funcionario.
+     * 
      * @throws FuncionarioNaoExisteException Caso o funcionário não exista.
      */
     private void visualizarInformacoesFuncionario() throws FuncionarioNaoExisteException {
@@ -548,6 +551,7 @@ public class MenuTerminal implements Menu {
 
     /**
      * Imprime as informações de uma Ordem de serviço.
+     * 
      * @throws OsNaoExisteException Caso a OrdemDeServico não exista.
      */
     private void visualizarInformacoesOs() throws OsNaoExisteException {
