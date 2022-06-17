@@ -23,7 +23,6 @@ public class MenuTerminal implements Menu {
     private Servicos sistema = new Servicos();
 
     public MenuTerminal() {
-        this.init();
     }
 
     /**
