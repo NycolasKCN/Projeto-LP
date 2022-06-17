@@ -43,9 +43,9 @@ public class Servicos {
      * @param modeloDoAparelho modelo do aparelho a ser consulado
      * @return retona o aparelho caso exista, e null caso não exista
      */
-    public Aparelho consultarAparelhoPorModelo(String modeloDoAparelho) throws AparelhoNaoExisteException {
+    public Aparelho consultarAparelhoPorId(String id) throws AparelhoNaoExisteException {
         for (Aparelho i : data.getAparelhos()) {
-            if (i.getModelo().equalsIgnoreCase(modeloDoAparelho)) {
+            if (i.getId().equals(id)) {
                 return i;
             }
         }

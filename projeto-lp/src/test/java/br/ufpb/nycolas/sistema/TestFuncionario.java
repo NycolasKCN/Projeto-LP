@@ -1,7 +1,10 @@
 package br.ufpb.nycolas.sistema;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 public class TestFuncionario {
     @Test
     public void TestaConstrutorTodosDeclarados() {

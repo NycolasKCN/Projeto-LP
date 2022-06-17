@@ -368,6 +368,7 @@ public class MenuTerminal implements Menu {
                 System.out.println();
             }
             System.out.println("-----------------------------------------------------------------------------");
+            visualizarInformacaoAparelho();
 
         } catch (AparelhoNaoExisteException e) {
             System.out.println(e.getMessage());
@@ -385,6 +386,19 @@ public class MenuTerminal implements Menu {
         System.out.println("Digite o nome do funcionário: ");
         // String nomeFuncionario = scan.nextLine();
 
+    }
+
+    private void visualizarInformacaoAparelho() throws AparelhoNaoExisteException{
+        System.out.println("Para vizualizar mais informações de um Aparelho, digite o id.");
+        System.out.print("Id: ");
+        String idQuerry = scan.nextLine();
+        Aparelho aparelhoQuerry = sistema.consultarAparelhoPorId(idQuerry);
+
+        System.out.println("Resultado: ");
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Marca: " + aparelhoQuerry.getMarca());
+        System.out.println("Modelo: " + aparelhoQuerry.getModelo());
+        System.out.println("Proprietário: " + aparelhoQuerry.getProprietario());
     }
 
     private static void clean() {

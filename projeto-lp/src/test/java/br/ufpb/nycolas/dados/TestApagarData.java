@@ -13,6 +13,7 @@ import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
 
+@Disabled
 @TestInstance(Lifecycle.PER_CLASS)
 public class TestApagarData {
     private LoadDataArq db;

@@ -1,8 +1,11 @@
 package br.ufpb.nycolas.sistema;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 public class TestOrdemDeServico {
     @Test
     public void TestaConstrutorTodosDeclarados() {

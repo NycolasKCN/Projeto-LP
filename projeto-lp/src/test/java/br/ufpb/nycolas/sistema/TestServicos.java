@@ -41,7 +41,7 @@ public class TestServicos {
         Servicos api = new Servicos();
         Aparelho a;
         try {
-            a = api.consultarAparelhoPorModelo(modeloExistente);
+            a = api.consultarAparelhoPorId(modeloExistente);
             assertEquals(modeloExistente, a.getModelo());
         } catch (AparelhoNaoExisteException e) {
             
@@ -51,7 +51,7 @@ public class TestServicos {
         String modeloInexistente = "lite preto";
         Aparelho a2;
         try {
-            a2 = api.consultarAparelhoPorModelo(modeloInexistente);
+            a2 = api.consultarAparelhoPorId(modeloInexistente);
             assertEquals(null, a2);
         } catch (AparelhoNaoExisteException e) {
             
