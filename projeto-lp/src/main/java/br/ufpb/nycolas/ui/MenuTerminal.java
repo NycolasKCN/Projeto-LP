@@ -1,6 +1,7 @@
 package br.ufpb.nycolas.ui;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
@@ -103,7 +104,7 @@ public class MenuTerminal implements Menu {
             System.out.println("0. Voltar");
             System.out.print("Operação: ");
             String operacaoCad = scan.nextLine();
-            
+
             if (operacaoCad.equals("0")) {
                 break;
             } else if (operacaoCad.equals("1")) {
@@ -119,9 +120,9 @@ public class MenuTerminal implements Menu {
                 System.out.print("Pressione enter para continuar.");
                 scan.nextLine();
             } else if (operacaoCad.equals("4")) {
-                // TODO buscar aparelho por proprietario
+                buscarAparelhoNome();
             } else if (operacaoCad.equals("5")) {
-                // TODO Buscar Funcionarios pelo nome
+                buscarFuncionarioNome();
             } else if (operacaoCad.equals("6")) {
                 // TODO Buscar os por funcionario
             } else {
@@ -346,6 +347,44 @@ public class MenuTerminal implements Menu {
 
             espere();
         }
+    }
+
+    private void buscarAparelhoNome() {
+        clean();
+        System.out.println("===== Buscar Aparelho =====");
+        System.out.print("Digite o nome do proprietário: ");
+        String proprietario = scan.nextLine();
+
+        try {
+            System.out.println("Resultado da consulta: ");
+            System.out.println("-----------------------------------------------------------------------------");
+            List<Aparelho> querry = sistema.consultarAparelhosPorProp(proprietario);
+            System.out.printf("%10s %20s %30s", "ID", "MARCA", "MODELO");
+            System.out.println();
+            System.out.println("-----------------------------------------------------------------------------");
+
+            for (Aparelho a : querry) {
+                System.out.format("%10s %20s %30s", a.getId(), a.getMarca(), a.getModelo());
+                System.out.println();
+            }
+            System.out.println("-----------------------------------------------------------------------------");
+
+        } catch (AparelhoNaoExisteException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
+            System.out.println(e);
+        }
+        System.out.print("Enter para continuar.");
+        scan.nextLine();
+    }
+
+    private void buscarFuncionarioNome() {
+        clean();
+        System.out.println("===== Buscar Funcionário =====");
+        System.out.println("Digite o nome do funcionário: ");
+        // String nomeFuncionario = scan.nextLine();
+
     }
 
     private static void clean() {

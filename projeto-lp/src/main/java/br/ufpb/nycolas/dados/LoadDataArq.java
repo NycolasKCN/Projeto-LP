@@ -217,8 +217,6 @@ public class LoadDataArq implements Data {
         return false;
     }
 
-    // TODO tratamento de erro disso aqui
-
     /**
      * Adiciona um novo aparelho a lista aparelhos.
      * 

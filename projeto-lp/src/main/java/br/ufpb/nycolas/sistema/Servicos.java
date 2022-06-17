@@ -1,5 +1,6 @@
 package br.ufpb.nycolas.sistema;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.ufpb.nycolas.dados.Data;
@@ -51,9 +52,23 @@ public class Servicos {
         throw new AparelhoNaoExisteException("Aparelho em questão não existe.");
     }
 
-    public Aparelho consultarAparelhoPorProp(String nomeProp) throws AparelhoNaoExisteException {
+    public List<Aparelho> consultarAparelhosPorProp(String nomeProp) throws AparelhoNaoExisteException {
+        List<Aparelho> querry = new ArrayList<>();
         for (Aparelho i : data.getAparelhos()) {
-            if (i.getProprietario().equalsIgnoreCase(nomeProp)) {
+            if (i.getProprietario().contains(nomeProp.toLowerCase())) {
+                querry.add(i);
+            }
+        }
+        if (!querry.isEmpty()) {
+            return querry;
+        } else {
+            throw new AparelhoNaoExisteException("Aparelho em questão não existe.");
+        }
+    }
+
+    public Aparelho consultarAparelhoPorProp(String nomeProp)  throws AparelhoNaoExisteException{
+        for (Aparelho i : data.getAparelhos()) {
+            if (i.getProprietario().contains(nomeProp)) {
                 return i;
             }
         }
