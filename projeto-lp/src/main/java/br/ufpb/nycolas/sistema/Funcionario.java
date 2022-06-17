@@ -1,8 +1,11 @@
 package br.ufpb.nycolas.sistema;
 
+/**
+ * Representação de um funcionário.
+ * 
+ * @author Nycolas Kevin
+ */
 public class Funcionario {
-    // TODO documentar todas as funções
-
     private String id;
     private String nome;
     private String usuario;
@@ -24,42 +27,15 @@ public class Funcionario {
         this(id, "vazio", "vazio", "vazio");
     }
 
-     /**
+    /**
      * Construtuor passando nome, usuario e senha
      * 
-     * @param nome nome completo do funcionario
+     * @param nome    nome completo do funcionario
      * @param usuario usuario para entrar no sistema
-     * @param senha senha para entrar no sistema
+     * @param senha   senha para entrar no sistema
      */
     public Funcionario(String nome, String usuario, String senha) {
         this("0", nome, usuario, senha);
-    }
-
-    
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Funcionario other = (Funcionario) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
     }
 
     /**
@@ -143,6 +119,31 @@ public class Funcionario {
      */
     public void setSenha(String novaSenha) {
         this.senha = novaSenha;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Funcionario other = (Funcionario) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
     }
 
 }
