@@ -1,7 +1,5 @@
 package br.ufpb.nycolas.dados;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.File;
 
 import org.junit.jupiter.api.AfterAll;
@@ -78,14 +76,6 @@ public class TestApagarData {
 
     @Test
     public void apagarAparelho() {
-        Aparelho a = new Aparelho();
-        assertTrue(db.apagarAparelho(a));
-
-        Aparelho b = new Aparelho("10025", "Iphone", "Apple", "sei lá");
-        assertFalse(db.apagarAparelho(b));
-
-        Aparelho c = new Aparelho("10002", "Samsung", "A10 256gb", "tela trincada");
-        assertTrue(db.apagarAparelho(c));
     }
 
     @Test

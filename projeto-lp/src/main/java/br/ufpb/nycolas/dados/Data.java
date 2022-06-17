@@ -2,6 +2,9 @@ package br.ufpb.nycolas.dados;
 
 import java.util.List;
 
+import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
+import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
+import br.ufpb.nycolas.exceptions.OsNaoExisteException;
 import br.ufpb.nycolas.sistema.*;
 
 public interface Data {
@@ -24,11 +27,11 @@ public interface Data {
 
     public boolean cadastrarOs(OrdemDeServico os);
 
-    public boolean apagarAparelho(Aparelho aparelho);
+    public void apagarAparelho(Aparelho aparelho) throws AparelhoNaoExisteException;
 
-    public boolean apagarFuncionario(Funcionario funcionario);
+    public void apagarFuncionario(Funcionario funcionario) throws FuncionarioNaoExisteException;
 
-    public boolean apagarOs(OrdemDeServico os);
+    public void apagarOs(OrdemDeServico os) throws OsNaoExisteException;
 
     public boolean salvarDados();
 

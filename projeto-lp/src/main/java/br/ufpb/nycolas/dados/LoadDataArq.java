@@ -10,12 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.ufpb.nycolas.exceptions.AparelhoNaoExisteException;
+import br.ufpb.nycolas.exceptions.FuncionarioNaoExisteException;
+import br.ufpb.nycolas.exceptions.OsNaoExisteException;
 import br.ufpb.nycolas.sistema.Aparelho;
 import br.ufpb.nycolas.sistema.Funcionario;
 import br.ufpb.nycolas.sistema.OrdemDeServico;
 
+/**
+ * Classe para persistir os dados do sistema
+ * 
+ * @author Nycolas Kevin
+ * @version 1.0
+ */
 public class LoadDataArq implements Data {
-    // TODO documentar todas as funções
     private final String CAMINHO_APARELHO = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
     private final String CAMINHO_FUNCIONARIO = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
     private final String CAMINHO_OS = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
@@ -255,14 +263,12 @@ public class LoadDataArq implements Data {
      * @return Retorna verdadeiro caso o aparelho tenha sido removido com sucesso.
      */
     @Override
-    public boolean apagarAparelho(Aparelho aparelho) {
-        for (Aparelho a : this.aparelhos) {
-            if (a.equals(aparelho)) {
-                aparelhos.remove(a);
-                return true;
-            }
+    public void apagarAparelho(Aparelho aparelho) throws AparelhoNaoExisteException {
+        if (aparelhoDeIdExiste(aparelho.getId())) {
+            aparelhos.remove(aparelho);
+            return;
         }
-        return false;
+        throw new AparelhoNaoExisteException("Aparelho não existe.");
     }
 
     /**
@@ -273,14 +279,12 @@ public class LoadDataArq implements Data {
      *         sucesso.
      */
     @Override
-    public boolean apagarFuncionario(Funcionario funcionario) {
-        for (Funcionario f : this.funcionarios) {
-            if (f.equals(funcionario)) {
-                funcionarios.remove(f);
-                return true;
-            }
+    public void apagarFuncionario(Funcionario funcionario) throws FuncionarioNaoExisteException {
+        if (funcionarioDeIdExiste(funcionario.getId())){
+            funcionarios.remove(funcionario);
+            return;
         }
-        return false;
+        throw new FuncionarioNaoExisteException("Funcionário não existe");
     }
 
     /**
@@ -291,14 +295,12 @@ public class LoadDataArq implements Data {
      *         sucesso.
      */
     @Override
-    public boolean apagarOs(OrdemDeServico ordemDeServico) {
-        for (OrdemDeServico o : this.ordemDeServicos) {
-            if (o.equals(ordemDeServico)) {
-                ordemDeServicos.remove(o);
-                return true;
-            }
+    public void apagarOs(OrdemDeServico ordemDeServico) throws OsNaoExisteException {
+        if (osDeIdExiste(ordemDeServico.getId())){
+            ordemDeServicos.remove(ordemDeServico);
+            return;
         }
-        return false;
+        throw new OsNaoExisteException("Ordem de serviço não existe.");
     }
 
     /**
@@ -345,4 +347,49 @@ public class LoadDataArq implements Data {
         return this.ordemDeServicos;
     }
 
+    /**
+     * Verifica a existencia de um aparelho com id "x" na lista aparelhos.
+     * 
+     * @param id O id do aparelho a ser verificado.
+     * @return Retorna verdadeiro caso o aparelho for encontrado.
+     */
+    public boolean aparelhoDeIdExiste(String id) {
+        for (Aparelho a : this.aparelhos) {
+            if (a.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Verifica a existencia de um funcionario de id "x" na lista funcionarios.
+     * 
+     * @param id O id do funcionario a ser verificado.
+     * @return Retorna verdaderio caso o funcionario for encontrado.
+     */
+    public boolean funcionarioDeIdExiste(String id) {
+        for (Funcionario f : this.funcionarios) {
+            if (f.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Verifica a existencia de uma ordem de serviço de id "x" na lista
+     * ordemDeServicos.
+     * 
+     * @param id O id da ordemDeServico a ser verificada.
+     * @return Retorna verdaderio caso a ordem de serviço for encontrada
+     */
+    public boolean osDeIdExiste(String id) {
+        for (OrdemDeServico os : this.ordemDeServicos) {
+            if (os.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
