@@ -19,7 +19,7 @@ public class TestServicos {
             f = api.consultarFuncionarioPeloNome(nomeFuncionarioExistente);
             assertEquals(nomeFuncionarioExistente, f.getNome());
         } catch (FuncionarioNaoExisteException e1) {
-            // TODO Auto-generated catch block
+            
             e1.printStackTrace();
         }
 
@@ -29,7 +29,7 @@ public class TestServicos {
             f2 = api.consultarFuncionarioPeloNome(nomeFuncionarioInexistente);
             assertEquals(null, f2);
         } catch (FuncionarioNaoExisteException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 
@@ -44,7 +44,7 @@ public class TestServicos {
             a = api.consultarAparelhoPorModelo(modeloExistente);
             assertEquals(modeloExistente, a.getModelo());
         } catch (AparelhoNaoExisteException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 
@@ -54,7 +54,7 @@ public class TestServicos {
             a2 = api.consultarAparelhoPorModelo(modeloInexistente);
             assertEquals(null, a2);
         } catch (AparelhoNaoExisteException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 

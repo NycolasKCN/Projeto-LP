@@ -6,6 +6,7 @@ import java.io.File;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -18,6 +19,7 @@ import br.ufpb.nycolas.sistema.OrdemDeServico;
 public class TestApagarData {
     private LoadDataArq db;
 
+    @Disabled
     @BeforeAll
     public void carregarDados() {
         String caminhoAparelho = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";

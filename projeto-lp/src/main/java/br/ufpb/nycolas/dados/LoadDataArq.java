@@ -16,13 +16,17 @@ import br.ufpb.nycolas.sistema.OrdemDeServico;
 
 public class LoadDataArq implements Data {
     // TODO documentar todas as funções
-    private String caminhoAparelho = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
-    private String caminhoFuncionario = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
-    private String caminhoOs = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
+    private final String CAMINHO_APARELHO = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
+    private final String CAMINHO_FUNCIONARIO = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
+    private final String CAMINHO_OS = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
     private List<Aparelho> aparelhos = new ArrayList<Aparelho>();
     private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
     private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
 
+    /**
+     * Inicia as listas e carrega os objetos
+     * caso os objetos não existam a lista ficara vazia.
+     */
     public LoadDataArq() {
         init();
         this.aparelhos = this.loadAparelhos();
@@ -30,22 +34,26 @@ public class LoadDataArq implements Data {
         this.ordemDeServicos = this.loadOrdemDeServicos();
     }
 
+    /**
+     * Caso os arquivos de dados não existam eles serão criados.
+     * É escrito a primeira linha que da referência para os id's
+     */
     private void init() {
         try {
-            if (!arquivoExiste(caminhoAparelho)) {
-                FileWriter arq = new FileWriter(caminhoAparelho);
+            if (!arquivoExiste(CAMINHO_APARELHO)) {
+                FileWriter arq = new FileWriter(CAMINHO_APARELHO);
                 PrintWriter gravar = new PrintWriter(arq);
                 gravar.println("100;vazio;vazio;vazio;");
                 gravar.close();
             }
-            if (!arquivoExiste(caminhoFuncionario)) {
-                FileWriter arq = new FileWriter(caminhoFuncionario);
+            if (!arquivoExiste(CAMINHO_FUNCIONARIO)) {
+                FileWriter arq = new FileWriter(CAMINHO_FUNCIONARIO);
                 PrintWriter gravar = new PrintWriter(arq);
                 gravar.println("200;vazio;vazio;vazio;");
                 gravar.close();
             }
-            if (!arquivoExiste(caminhoOs)) {
-                FileWriter arq = new FileWriter(caminhoOs);
+            if (!arquivoExiste(CAMINHO_OS)) {
+                FileWriter arq = new FileWriter(CAMINHO_OS);
                 PrintWriter gravar = new PrintWriter(arq);
                 gravar.println("300;vazio;vazio;100;200;");
                 gravar.close();
@@ -56,15 +64,15 @@ public class LoadDataArq implements Data {
     }
 
     /**
-     * Carrega os dados de aparelhos
+     * Carrega os dados de todos os aparelhos.
      * 
-     * @return uma lista com todos os aparelhos dentro do banco de dados
+     * @return uma lista com todos os aparelhos que estão escritos no arquivo.
      */
     @Override
     public List<Aparelho> loadAparelhos() {
-        if (arquivoExiste(caminhoAparelho)) {
+        if (arquivoExiste(CAMINHO_APARELHO)) {
             try {
-                Scanner scan = new Scanner(new FileReader(caminhoAparelho));
+                Scanner scan = new Scanner(new FileReader(CAMINHO_APARELHO));
                 while (scan.hasNextLine()) {
                     String[] dados = scan.nextLine().split(";");
                     String id = dados[0];
@@ -85,11 +93,16 @@ public class LoadDataArq implements Data {
         return this.aparelhos;
     }
 
+    /**
+     * Carrega os dados de todos os funcionários.
+     * 
+     * @return uma lista com todos os funcionarios que estão escritos no arquivo.
+     */
     @Override
     public List<Funcionario> loadFuncionarios() {
-        if (arquivoExiste(caminhoFuncionario)) {
+        if (arquivoExiste(CAMINHO_FUNCIONARIO)) {
             try {
-                Scanner scan = new Scanner(new FileReader(caminhoFuncionario));
+                Scanner scan = new Scanner(new FileReader(CAMINHO_FUNCIONARIO));
 
                 while (scan.hasNextLine()) {
                     String[] dados = scan.nextLine().split(";");
@@ -110,11 +123,18 @@ public class LoadDataArq implements Data {
         return this.funcionarios;
     }
 
+    /**
+     * Carrega todos os dados das ordens de serviço, e atribui a elas seus
+     * respectivos funcionários e aparelhos vinculados.
+     * 
+     * @return uma lista com todas as ordens de serviço escritas no arquivo.
+     * 
+     */
     @Override
     public List<OrdemDeServico> loadOrdemDeServicos() {
-        if (arquivoExiste(caminhoOs)) {
+        if (arquivoExiste(CAMINHO_OS)) {
             try {
-                Scanner scan = new Scanner(new FileReader(caminhoOs));
+                Scanner scan = new Scanner(new FileReader(CAMINHO_OS));
 
                 while (scan.hasNextLine()) {
                     String[] dados = scan.nextLine().split(";");
@@ -151,16 +171,21 @@ public class LoadDataArq implements Data {
         return this.ordemDeServicos;
     }
 
+    /**
+     * Salva todos os dados em seus respectivos arquivos .txt.
+     * 
+     * @return retorna true, caso tenha ocorrido tudo bem.
+     */
     @Override
     public boolean salvarDados() {
         try {
-            FileWriter arqAparelhos = new FileWriter(caminhoAparelho);
+            FileWriter arqAparelhos = new FileWriter(CAMINHO_APARELHO);
             PrintWriter gravarAparelhos = new PrintWriter(arqAparelhos);
 
-            FileWriter arqFuncionarios = new FileWriter(caminhoFuncionario);
+            FileWriter arqFuncionarios = new FileWriter(CAMINHO_FUNCIONARIO);
             PrintWriter gravarFuncionarios = new PrintWriter(arqFuncionarios);
 
-            FileWriter arqOs = new FileWriter(caminhoOs);
+            FileWriter arqOs = new FileWriter(CAMINHO_OS);
             PrintWriter gravarOs = new PrintWriter(arqOs);
 
             for (Aparelho a : this.aparelhos) {
@@ -184,28 +209,55 @@ public class LoadDataArq implements Data {
         return false;
     }
 
+    // TODO tratamento de erro disso aqui
+
+    /**
+     * Adiciona um novo aparelho a lista aparelhos.
+     * 
+     * @param aparelho O aparelho a ser adicionado.
+     * @return Retorna verdadeiro caso o aparelho tenha sido adicionado com sucesso.
+     */
     @Override
     public boolean cadastrarAparelho(Aparelho aparelho) {
         this.aparelhos.add(aparelho);
         return true;
     }
 
+    /**
+     * Adiciona um novo funcionário a lista funcionarios.
+     * 
+     * @param funcionario O funcionario a ser adicionado.
+     * @return Retorna verdadeiro caso o funcionario tenha sido adicionado com
+     *         sucesso.
+     */
     @Override
     public boolean cadastrarFuncionario(Funcionario funcionario) {
         this.funcionarios.add(funcionario);
         return true;
     }
 
+    /**
+     * Adiciona uma nova ordem de serviço a lista os.
+     * 
+     * @param os A ordem de serviço a ser adicionada.
+     * @return Retorna verdadeiro caso a os tenha sido adicionada com sucesso.
+     */
     @Override
     public boolean cadastrarOs(OrdemDeServico os) {
         this.ordemDeServicos.add(os);
         return true;
     }
 
+    /**
+     * Remove o aparelho da lista aparelhos.
+     * 
+     * @param aparelho O aparelho que será removido.
+     * @return Retorna verdadeiro caso o aparelho tenha sido removido com sucesso.
+     */
     @Override
     public boolean apagarAparelho(Aparelho aparelho) {
         for (Aparelho a : this.aparelhos) {
-            if (a.getId().equals(aparelho.getId())) {
+            if (a.equals(aparelho)) {
                 aparelhos.remove(a);
                 return true;
             }
@@ -213,10 +265,17 @@ public class LoadDataArq implements Data {
         return false;
     }
 
+    /**
+     * Remove o funcionario da lista de funcionarios.
+     * 
+     * @param funcionario O funcionario que será removido.
+     * @return Retorna verdadeiro caso o funcionario tenha sido removido com
+     *         sucesso.
+     */
     @Override
     public boolean apagarFuncionario(Funcionario funcionario) {
         for (Funcionario f : this.funcionarios) {
-            if (f.getId().equals(funcionario.getId())) {
+            if (f.equals(funcionario)) {
                 funcionarios.remove(f);
                 return true;
             }
@@ -224,10 +283,17 @@ public class LoadDataArq implements Data {
         return false;
     }
 
+    /**
+     * Remove a ordem de serviço da lista os.
+     * 
+     * @param ordemDeServico A ordem de serviço que será removida.
+     * @return Retorna verdadeiro caso a ordem de serviço tenha sido removida com
+     *         sucesso.
+     */
     @Override
     public boolean apagarOs(OrdemDeServico ordemDeServico) {
         for (OrdemDeServico o : this.ordemDeServicos) {
-            if (o.getId().equals(ordemDeServico.getId())) {
+            if (o.equals(ordemDeServico)) {
                 ordemDeServicos.remove(o);
                 return true;
             }
@@ -252,14 +318,29 @@ public class LoadDataArq implements Data {
         return existe;
     }
 
+    /**
+     * Retorna a lista aparelhos, que contêm os aparelhos salvos.
+     * 
+     * @return A lista aparelhos.
+     */
     public List<Aparelho> getAparelhos() {
         return this.aparelhos;
     }
 
+    /**
+     * Retorna a lista funcionarios, que contêm os funcionarios salvos.
+     * 
+     * @return A lista funcionarios.
+     */
     public List<Funcionario> getFuncionarios() {
         return this.funcionarios;
     }
 
+    /**
+     * Retorna a lista ordemDeServicos, que contêm as ordens de serviço salvas.
+     * 
+     * @return A lista ordemDeServicos
+     */
     public List<OrdemDeServico> getOrdemDeServicos() {
         return this.ordemDeServicos;
     }
