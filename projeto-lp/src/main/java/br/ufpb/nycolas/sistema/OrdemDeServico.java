@@ -10,7 +10,8 @@ public class OrdemDeServico {
     private Aparelho aparelhoVinculado;
     private Funcionario funcionarioResponsavel;
 
-    public OrdemDeServico(String id, String status, String descricao, Aparelho aparelhoVinculado, Funcionario funcionarioResponsavel) {
+    public OrdemDeServico(String id, String status, String descricao, Aparelho aparelhoVinculado,
+            Funcionario funcionarioResponsavel) {
         this.id = id;
         this.status = status;
         this.descricaoProblema = descricao;
@@ -28,11 +29,9 @@ public class OrdemDeServico {
     /**
      * Construtor padrão, nenhum parametro
      */
-    public OrdemDeServico(String status, String descricao, Aparelho ap, Funcionario fu){
-        this("0",status, descricao, ap, fu);
-    } 
-
-    
+    public OrdemDeServico(String status, String descricao, Aparelho ap, Funcionario fu) {
+        this("0", status, descricao, ap, fu);
+    }
 
     @Override
     public int hashCode() {

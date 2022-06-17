@@ -104,10 +104,16 @@ public class MenuTerminal implements Menu {
                 break;
             } else if (operacaoCad.equals("1")) {
                 tabelaAparelho();
+                System.out.print("Pressione enter para continuar.");
+                scan.nextLine();
             } else if (operacaoCad.equals("2")) {
                 tabelaFuncionario();
+                System.out.print("Pressione enter para continuar.");
+                scan.nextLine();
             } else if (operacaoCad.equals("3")) {
                 tabelaOs();
+                System.out.print("Pressione enter para continuar.");
+                scan.nextLine();
             } else {
                 System.out.println("Operação invalida! tente novamente.");
                 espere();
@@ -191,7 +197,7 @@ public class MenuTerminal implements Menu {
             sistema.cadastrarNovaOs(status, descricao, cliente, funcionario);
         } catch (AparelhoNaoExisteException e) {
             System.out.println(e.getMessage());
-        } catch (FuncionarioNaoExisteException e){
+        } catch (FuncionarioNaoExisteException e) {
             System.out.println(e.getMessage());
         } finally {
             System.out.println("Ordem de serviço registrada!");
@@ -215,8 +221,6 @@ public class MenuTerminal implements Menu {
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.println("Pressione enter para continuar.");
-        scan.nextLine();
     }
 
     private void tabelaFuncionario() {
@@ -235,8 +239,6 @@ public class MenuTerminal implements Menu {
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.println("Pressione enter para continuar.");
-        scan.nextLine();
     }
 
     private void tabelaOs() {
@@ -255,12 +257,23 @@ public class MenuTerminal implements Menu {
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
-        System.out.println("Pressione enter para continuar.");
-        scan.nextLine();
     }
 
     private void apagaAparelho() {
-        // TODO
+        System.out.println("===== Apagar aparelho =====");
+        tabelaAparelho();
+        System.out.println("Digite o id para o aparelho que deseja apagar: ");
+        String idAparelho = scan.nextLine();
+
+        try {
+            sistema.apagarAparelhoPorId(idAparelho);
+        } catch (AparelhoNaoExisteException e) {
+            System.out.println(e);
+        } finally {
+            System.out.println("Aparelho apagado com sucesso!");
+        }
+
+        espere();
     }
 
     private void apagaFuncionario() {

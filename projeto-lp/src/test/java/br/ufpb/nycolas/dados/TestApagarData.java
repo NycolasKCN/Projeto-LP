@@ -35,6 +35,17 @@ public class TestApagarData {
 
         db.cadastrarAparelho(new Aparelho());
 
+        /**
+         * 302;na loja;Iphone 13 com bateria estufada;101;201;
+            303;ok;a10 com tela trincada;102;201;
+            304;sem conserto;iphone 7 plus, placa mae nao tem jeito;101;201;
+
+            201;nycolas kevin;nyc;191102rt;
+
+            101;apple;iphone 7 plus 128gb preto;junior;
+            102;samsung;a10 16gb vermelho;yasmim;
+         */
+
         Aparelho apA = new Aparelho("10002", "Samsung", "A10 256gb", "tela trincada");
         Funcionario fA = new Funcionario("20001", "Nycolas Kevin", "nyc", "191102");
         OrdemDeServico a = new OrdemDeServico("30001", "Entregue", "Descrição....", apA, fA);

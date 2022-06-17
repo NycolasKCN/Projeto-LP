@@ -74,8 +74,14 @@ public class Servicos {
         return newAparelho;
     }
 
-    public void apagarAparelho(Aparelho ap) {
-        data.apagarAparelho(ap);
+    public void apagarAparelhoPorId(String id) throws AparelhoNaoExisteException {
+        for (Aparelho a : data.getAparelhos()) {
+            if (a.getId().equals(id)) {
+                data.apagarAparelho(a);
+                return;
+            }
+        }
+        throw new AparelhoNaoExisteException("Aparelho não pode ser apagado, pois não existe.");
     }
 
     /**
