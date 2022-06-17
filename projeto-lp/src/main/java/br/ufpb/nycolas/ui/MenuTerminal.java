@@ -196,6 +196,7 @@ public class MenuTerminal implements Menu {
 
         try {
             sistema.cadastrarNovaOs(status, descricao, cliente, funcionario);
+            System.out.println("Ordem de serviço registrada!");
         } catch (AparelhoNaoExisteException e) {
             System.out.println(e.getMessage());
         } catch (FuncionarioNaoExisteException e) {
@@ -203,8 +204,6 @@ public class MenuTerminal implements Menu {
         } catch (Exception e) {
             System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
             System.out.println(e);
-        }finally {
-            System.out.println("Ordem de serviço registrada!");
         }
         espere();
     }
@@ -264,64 +263,83 @@ public class MenuTerminal implements Menu {
     }
 
     private void apagaAparelho() {
-        System.out.println("===== Apagar aparelho =====");
-        tabelaAparelho();
-        System.out.print("Digite o id para o aparelho que deseja apagar: ");
-        String idAparelho = scan.nextLine();
+        boolean continuar = true;
+        while (continuar) {
+            System.out.println("===== Apagar aparelho =====");
+            tabelaAparelho();
+            System.out.print("Digite o id para o aparelho que deseja apagar: ");
+            String idAparelho = scan.nextLine();
 
-        try {
-            sistema.apagarAparelhoPorId(idAparelho);
-        } catch (AparelhoNaoExisteException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
-            System.out.println(e);
-        } finally {
-            System.out.println("Aparelho apagado com sucesso!");
+            try {
+                sistema.apagarAparelhoPorId(idAparelho);
+                System.out.println("Aparelho apagado com sucesso!");
+            } catch (AparelhoNaoExisteException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
+                System.out.println(e);
+            }
+
+            espere();
         }
-
-        espere();
     }
 
     private void apagaFuncionario() {
-        System.out.println(("===== Apagar funcionário ====="));
-        tabelaFuncionario();
-        System.out.print("Digite o id para apagar o funcionário que deseja: ");
-        String idFuncionario = scan.nextLine();
 
-        try {
-            sistema.apagarFuncionarioPorId(idFuncionario);
-        } catch (FuncionarioNaoExisteException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
-            System.out.println(e);
-        } finally {
-            System.out.println("Funcionário apagado com sucesso!");
+        boolean continuar = true;
+        while (continuar) {
+            System.out.println(("===== Apagar funcionário ====="));
+            tabelaFuncionario();
+            System.out.print("Digite o id para apagar o funcionário que deseja: (0 para não apagar nada) ");
+            String idFuncionario = scan.nextLine();
+
+            if (idFuncionario.equals("0")) {
+                continuar = false;
+                continue;
+            }
+            try {
+                sistema.apagarFuncionarioPorId(idFuncionario);
+                System.out.println("Funcionário apagado com sucesso!");
+            } catch (FuncionarioNaoExisteException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
+                System.out.println(e);
+            }
+
+            espere();
         }
-
-        espere();
     }
 
     private void apagaOs() {
-        System.out.println("===== Apagar OS =====");
-        tabelaOs();
-        System.out.print("Digite o id para apagar a OS que deseja: ");
-        String idOs = scan.nextLine();
+        boolean continuar = true;
+        while (continuar) {
+            System.out.println("===== Apagar OS =====");
+            tabelaOs();
+            System.out.print("Digite o id para apagar a OS que deseja: (0 para não apaga nada)");
+            String idOs = scan.nextLine();
 
-        try {
-            sistema.apagarOsPorId(idOs);
-        } catch (OsNaoExisteException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
-            System.out.println(e);
-        } finally {
-            System.out.println("Ordem de serviço apagada com sucesso");
+            if (idOs.equals("0")) {
+                continuar = false;
+                continue;
+            }
+
+            try {
+                sistema.apagarOsPorId(idOs);
+                System.out.println("Ordem de serviço apagada com sucesso");
+                continuar = false;
+            } catch (OsNaoExisteException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Um erro desconhecido aconteceu! mais detalhes a baixo.");
+                System.out.println(e);
+            }
+
+            espere();
         }
     }
 
-    private void clean() {
+    private static void clean() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -332,7 +350,7 @@ public class MenuTerminal implements Menu {
 
     }
 
-    private void espere() {
+    private static void espere() {
         try {
             Thread.sleep(800);
         } catch (InterruptedException e) {
