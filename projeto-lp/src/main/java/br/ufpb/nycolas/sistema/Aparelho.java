@@ -1,7 +1,11 @@
 package br.ufpb.nycolas.sistema;
 
+/**
+ * Representação de um Aparelho celular.
+ * 
+ * @author Nycolas Kevin
+ */
 public class Aparelho {
-    // TODO documentar todas as funções
     private String id;
     private String marca;
     private String modelo;
@@ -43,9 +47,9 @@ public class Aparelho {
     }
 
     /**
-     * Representação do aparelho em String
+     * Representação do aparelho em String.
      * 
-     * @return Retorna todos os atributos separados por ";"
+     * @return Retorna todos os atributos separados por {@code ;}
      */
     @Override
     public String toString() {
@@ -53,51 +57,57 @@ public class Aparelho {
     }
 
     /**
-     * @return retorna o id do aparelho
+     * @return retorna o id do aparelho.
      */
     public String getId() {
         return this.id;
     }
 
     /**
-     * @param novoId Novo id do aparelho
+     * @param novoId Novo id do aparelho.
      */
     public void setId(String novoId) {
         this.id = novoId;
     }
 
     /**
-     * @return retorna a marca do aparelho
+     * @return retorna a marca do aparelho.
      */
     public String getMarca() {
         return this.marca;
     }
 
     /**
-     * @param novaMarca Nova marca do aparelho
+     * @param novaMarca Nova marca do aparelho.
      */
     public void setMarca(String novaMarca) {
         this.marca = novaMarca;
     }
 
     /**
-     * @return Retorna o modelo do aparelho
+     * @return Retorna o modelo do aparelho.
      */
     public String getModelo() {
         return this.modelo;
     }
 
     /**
-     * @param novoModelo Novo modelo do aparelho
+     * @param novoModelo Novo modelo do aparelho.
      */
     public void setModelo(String novoModelo) {
         this.modelo = novoModelo;
     }
 
+    /**
+     * @return Retorna o proprietario.
+     */
     public String getProprietario() {
         return proprietario;
     }
 
+    /**
+     * @param proprietario o novo proprietario.
+     */
     public void setProprietario(String proprietario) {
         this.proprietario = proprietario;
     }
@@ -126,5 +136,5 @@ public class Aparelho {
             return false;
         return true;
     }
-    
+
 }
