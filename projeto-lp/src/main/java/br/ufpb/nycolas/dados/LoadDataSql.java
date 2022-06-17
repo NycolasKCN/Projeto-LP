@@ -20,7 +20,7 @@ public class LoadDataSql {
      * 
      * @return
      */
-    private Connection connect() {
+    private static Connection connect() {
         String url = "jdbc:sqlite:c:/BancoDeDados-LP/banco.db";
         Connection conn = null;
         try {
@@ -49,7 +49,7 @@ public class LoadDataSql {
         Connection conn = null;
         Statement stmt = null;
         try {
-            conn = this.connect();
+            conn = connect();
             conn.setAutoCommit(false);
 
             stmt = conn.createStatement();
@@ -89,7 +89,7 @@ public class LoadDataSql {
         Statement stmt = null;
 
         try {
-            conn = this.connect();
+            conn = connect();
             conn.setAutoCommit(false);
 
             stmt = conn.createStatement();
@@ -130,7 +130,7 @@ public class LoadDataSql {
         Statement stmt = null;
 
         try {
-            conn = this.connect();
+            conn = connect();
             conn.setAutoCommit(false);
 
             stmt = conn.createStatement();
@@ -158,17 +158,17 @@ public class LoadDataSql {
     }
 
     public boolean cadastrarAparelho(Aparelho aparelho) {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
     public boolean cadastrarFuncionario(Funcionario funcionario) {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
     public boolean cadastrarOs(OrdemDeServico os) {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
@@ -189,37 +189,36 @@ public class LoadDataSql {
     }
 
     public List<Aparelho> getAparelhos() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
     public List<Funcionario> getFuncionarios() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
     public List<OrdemDeServico> getOrdemDeServicos() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
     public boolean apagarAparelho(Aparelho aparelho) {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
     public boolean apagarFuncionario(Funcionario funcionario) {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
     public boolean apagarOs(OrdemDeServico os) {
-        // TODO Auto-generated method stub
         return false;
     }
 
     public boolean salvarDados() {
-        // TODO Auto-generated method stub
+
         return false;
     }
 }
