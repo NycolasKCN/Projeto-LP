@@ -213,7 +213,7 @@ public class Servicos {
      */
     public Funcionario consultarFuncionarioPeloNome(String nomeFuncionario) throws FuncionarioNaoExisteException {
         for (Funcionario f : data.getFuncionarios()) {
-            if (f.getNome().equalsIgnoreCase(nomeFuncionario)) {
+            if (f.getNome().toLowerCase().contains(nomeFuncionario)) {
                 return f;
             }
         }

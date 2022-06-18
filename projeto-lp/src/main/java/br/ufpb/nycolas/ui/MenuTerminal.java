@@ -264,6 +264,12 @@ public class MenuTerminal implements Menu {
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
+        
+        try {
+            visualizarInformacoesAparelho();
+        } catch (AparelhoNaoExisteException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -285,6 +291,12 @@ public class MenuTerminal implements Menu {
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
+
+        try {
+            visualizarInformacoesFuncionario();
+        } catch (FuncionarioNaoExisteException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -306,6 +318,11 @@ public class MenuTerminal implements Menu {
             System.out.println();
         }
         System.out.println("-----------------------------------------------------------------------------");
+        try {
+            visualizarInformacoesOs();
+        } catch (OsNaoExisteException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -516,6 +533,9 @@ public class MenuTerminal implements Menu {
 
         if (idQuerry.equals("0")) {
             return;
+        } else if (idQuerry.isBlank()) {
+            System.out.println("Digite algo.");
+            return;
         }
         Aparelho consultedAparelho = sistema.consultarAparelhoPorId(idQuerry);
 
@@ -540,6 +560,9 @@ public class MenuTerminal implements Menu {
 
         if (idQuerry.equals("0")) {
             return;
+        } else if (idQuerry.isBlank()) {
+            System.out.println("Digite algo.");
+            return;
         }
         Funcionario consultedFuncionario = sistema.consultarFuncionarioPorId(idQuerry);
         System.out.println("-----------------------------------------------------------------------------");
@@ -562,6 +585,9 @@ public class MenuTerminal implements Menu {
         String idQuerry = scan.nextLine();
 
         if (idQuerry.equals("0")) {
+            return;
+        }  else if (idQuerry.isBlank()) {
+            System.out.println("Digite algo.");
             return;
         }
         OrdemDeServico consultedOs = sistema.consultarOSdeId(idQuerry);
