@@ -24,9 +24,9 @@ import br.ufpb.nycolas.sistema.OrdemDeServico;
  * @version 1.0
  */
 public class LoadDataArq implements Data {
-    private final String CAMINHO_APARELHO = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\AparelhosDB.txt";
-    private final String CAMINHO_FUNCIONARIO = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\FuncionarioDB.txt";
-    private final String CAMINHO_OS = "C:\\Scripts\\Java\\projetos\\Projeto-LP\\projeto-lp\\src\\main\\java\\br\\ufpb\\nycolas\\dados\\db\\OrdensDeServicoDB.txt";
+    private final String CAMINHO_APARELHO = "db\\AparelhosDB.txt";
+    private final String CAMINHO_FUNCIONARIO = "db\\FuncionarioDB.txt";
+    private final String CAMINHO_OS = "db\\OrdensDeServicoDB.txt";
     private List<Aparelho> aparelhos = new ArrayList<Aparelho>();
     private List<Funcionario> funcionarios = new ArrayList<Funcionario>();
     private List<OrdemDeServico> ordemDeServicos = new ArrayList<OrdemDeServico>();
